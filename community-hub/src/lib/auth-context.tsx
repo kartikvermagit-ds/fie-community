@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check saved session in localStorage for demo mode or Supabase session
     if (typeof window !== 'undefined') {
-      const savedUser = localStorage.getItem('buildspace_demo_user');
+      const savedUser = localStorage.getItem('fie_community_user');
       if (savedUser) {
         try {
           const parsed = JSON.parse(savedUser);
@@ -103,7 +103,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     
     setUser(matched);
     if (typeof window !== 'undefined') {
-      localStorage.setItem('buildspace_demo_user', JSON.stringify(matched));
+      localStorage.setItem('fie_community_user', JSON.stringify(matched));
     }
     setIsLoading(false);
     return true;
@@ -132,7 +132,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Demo signup: construct new profile
     const newUser: UserProfile = {
       id: `usr_${Date.now()}`,
-      email: userData.email || 'builder@buildspace.dev',
+      email: userData.email || 'builder@fiecommunity.dev',
       username: userData.username || 'builder',
       full_name: userData.full_name || 'New Builder',
       avatar_url: `https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80`,
@@ -147,7 +147,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     setUser(newUser);
     if (typeof window !== 'undefined') {
-      localStorage.setItem('buildspace_demo_user', JSON.stringify(newUser));
+      localStorage.setItem('fie_community_user', JSON.stringify(newUser));
     }
     setIsLoading(false);
     return true;
@@ -160,7 +160,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     setUser(null);
     if (typeof window !== 'undefined') {
-      localStorage.removeItem('buildspace_demo_user');
+      localStorage.removeItem('fie_community_user');
     }
   };
 
@@ -169,7 +169,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (target) {
       setUser(target);
       if (typeof window !== 'undefined') {
-        localStorage.setItem('buildspace_demo_user', JSON.stringify(target));
+        localStorage.setItem('fie_community_user', JSON.stringify(target));
       }
     }
   };
@@ -179,7 +179,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const merged = { ...user, ...updated };
     setUser(merged);
     if (typeof window !== 'undefined') {
-      localStorage.setItem('buildspace_demo_user', JSON.stringify(merged));
+      localStorage.setItem('fie_community_user', JSON.stringify(merged));
     }
   };
 

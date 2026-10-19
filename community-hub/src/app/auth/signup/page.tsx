@@ -8,6 +8,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ToastContainer } from '@/components/ui/toast-container';
 import { Terminal, ArrowRight, User, Mail, Lock, School, Code2 } from 'lucide-react';
+import { BrandLogo } from '@/components/ui/brand-logo';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -54,20 +55,20 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white relative">
       <Navbar />
       <ToastContainer />
 
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative z-10">
         <div className="w-full max-w-lg">
-          <div className="rounded-3xl border border-white/10 bg-[#0C1222]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
+          <div className="rounded-3xl border border-white/10 bg-[#0D131F]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
             <div className="text-center mb-6">
-              <div className="h-10 w-10 mx-auto rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(0,240,255,0.3)]">
-                <Terminal className="w-5 h-5 text-cyan-400" />
+              <div className="flex justify-center mb-4">
+                <BrandLogo variant="symbol" size="lg" withGlow={true} />
               </div>
-              <h1 className="font-heading text-2xl font-bold text-white tracking-tight">Join BuildSpace</h1>
+              <h1 className="font-heading text-2xl font-bold text-white tracking-tight">Join FIE COMMUNITY</h1>
               <p className="text-xs text-slate-400 mt-1">
-                Create your student/builder passport and join the digital campus
+                Where Ideas Find Their Team — Connect. Collaborate. Create.
               </p>
             </div>
 
@@ -89,7 +90,7 @@ export default function SignupPage() {
                       onChange={(e) => setFullName(e.target.value)}
                       placeholder="Ada Lovelace"
                       required
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                     />
                   </div>
                 </div>
@@ -102,7 +103,7 @@ export default function SignupPage() {
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="adalovelace"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -117,7 +118,7 @@ export default function SignupPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ada@university.edu"
                     required
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -133,7 +134,7 @@ export default function SignupPage() {
                     placeholder="At least 8 characters"
                     required
                     minLength={6}
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -144,7 +145,7 @@ export default function SignupPage() {
                   <select
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0C1222] text-sm text-white focus:outline-none focus:border-cyan-500"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0D131F] text-sm text-white focus:outline-none focus:border-orange-500"
                   >
                     <option value="Full-Stack Engineer">Full-Stack Engineer</option>
                     <option value="Frontend Specialist">Frontend Specialist</option>
@@ -165,7 +166,7 @@ export default function SignupPage() {
                       value={college}
                       onChange={(e) => setCollege(e.target.value)}
                       placeholder="e.g. Stanford / IIT Madras"
-                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                      className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                     />
                   </div>
                 </div>
@@ -182,7 +183,7 @@ export default function SignupPage() {
                     value={skills}
                     onChange={(e) => setSkills(e.target.value)}
                     placeholder="Rust, Next.js, PyTorch, Figma"
-                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
@@ -190,7 +191,7 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50"
+                className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50"
               >
                 {loading ? 'Creating Passport...' : 'Complete Registration'}
                 <ArrowRight className="w-4 h-4" />
@@ -200,7 +201,7 @@ export default function SignupPage() {
             <div className="pt-6 mt-6 border-t border-white/10 text-center">
               <p className="text-xs text-slate-400">
                 Already have an account?{' '}
-                <Link href="/auth/login" className="text-cyan-400 hover:underline font-semibold">
+                <Link href="/auth/login" className="text-orange-400 hover:underline font-semibold">
                   Sign in
                 </Link>
               </p>

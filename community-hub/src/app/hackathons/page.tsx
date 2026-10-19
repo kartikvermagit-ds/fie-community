@@ -98,7 +98,7 @@ export default function HackathonsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -126,7 +126,7 @@ export default function HackathonsPage() {
             </button>
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(249,115,22,0.3)]"
             >
               <PlusCircle className="w-4 h-4" />
               List Hackathon
@@ -160,7 +160,7 @@ export default function HackathonsPage() {
             onClick={() => setActiveTab('upcoming')}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === 'upcoming'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -190,7 +190,7 @@ export default function HackathonsPage() {
                     {h.status}
                   </span>
 
-                  <span className="absolute bottom-3 left-3 text-xs font-mono px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md text-cyan-300 border border-white/10 font-bold">
+                  <span className="absolute bottom-3 left-3 text-xs font-mono px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md text-orange-300 border border-white/10 font-bold">
                     Prize Pool: {h.prize_pool}
                   </span>
                 </div>
@@ -209,7 +209,7 @@ export default function HackathonsPage() {
 
                   <div className="mt-4 pt-3 border-t border-white/5 space-y-2 text-xs text-slate-400">
                     <div className="flex items-center gap-2">
-                      <Calendar className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                      <Calendar className="w-3.5 h-3.5 text-orange-400 shrink-0" />
                       <span>{new Date(h.start_date).toLocaleDateString()} – {new Date(h.end_date).toLocaleDateString()}</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function HackathonsPage() {
         {/* HACKATHON DETAILS MODAL */}
         {selectedHackathon && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-2xl bg-[#0C1222] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+            <div className="w-full max-w-2xl bg-[#0D131F] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
               <button
                 onClick={() => setSelectedHackathon(null)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -280,7 +280,7 @@ export default function HackathonsPage() {
                 <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-2">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Prize Pool:</span>
-                    <span className="text-cyan-400 font-mono font-bold">{selectedHackathon.prize_pool}</span>
+                    <span className="text-orange-400 font-mono font-bold">{selectedHackathon.prize_pool}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Team Size Constraint:</span>
@@ -342,7 +342,7 @@ export default function HackathonsPage() {
         {/* LOOKING FOR TEAMMATES MODAL */}
         {lookingForTeamModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
                 <h3 className="font-heading text-lg font-bold text-white">Post Teammate Search</h3>
                 <button onClick={() => setLookingForTeamModal(false)} className="text-slate-400 hover:text-white">
@@ -354,8 +354,8 @@ export default function HackathonsPage() {
                 Your profile will be highlighted to squad leaders looking for your stack.
               </p>
 
-              <div className="p-3 rounded-xl border border-cyan-500/20 bg-cyan-500/[0.05] mb-4 text-xs">
-                <p className="font-semibold text-cyan-300">{user?.full_name}</p>
+              <div className="p-3 rounded-xl border border-orange-500/20 bg-orange-500/[0.05] mb-4 text-xs">
+                <p className="font-semibold text-orange-300">{user?.full_name}</p>
                 <p className="text-[11px] text-slate-400">{user?.role} · {user?.skills.join(', ')}</p>
               </div>
 
@@ -372,7 +372,7 @@ export default function HackathonsPage() {
                     showToast({
                       type: 'success',
                       title: 'Teammate request broadcasted!',
-                      description: 'Squad leaders on BuildSpace can now invite you directly.',
+                      description: 'Squad leaders on FIE Community can now invite you directly.',
                     });
                   }}
                   className="px-5 py-2 text-xs font-semibold bg-cyan-400 text-black rounded-xl hover:bg-cyan-300"
@@ -387,7 +387,7 @@ export default function HackathonsPage() {
         {/* CREATE HACKATHON MODAL */}
         {showCreateModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-xl bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+            <div className="w-full max-w-xl bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
               <button
                 onClick={() => setShowCreateModal(false)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -411,7 +411,7 @@ export default function HackathonsPage() {
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. HackMIT Winter 2026"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -424,7 +424,7 @@ export default function HackathonsPage() {
                       onChange={(e) => setOrganizer(e.target.value)}
                       placeholder="e.g. Linux Club × ACM"
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
 
@@ -436,7 +436,7 @@ export default function HackathonsPage() {
                       onChange={(e) => setPrizePool(e.target.value)}
                       placeholder="$25,000 USD"
                       required
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -449,7 +449,7 @@ export default function HackathonsPage() {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Brief description of the challenge themes and targets..."
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -460,7 +460,7 @@ export default function HackathonsPage() {
                     value={registrationUrl}
                     onChange={(e) => setRegistrationUrl(e.target.value)}
                     placeholder="https://..."
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -471,7 +471,7 @@ export default function HackathonsPage() {
                     value={tagsInput}
                     onChange={(e) => setTagsInput(e.target.value)}
                     placeholder="AI, Web3, Systems, Mobile"
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -485,7 +485,7 @@ export default function HackathonsPage() {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                    className="px-6 py-2 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)]"
                   >
                     Publish Hackathon
                   </button>

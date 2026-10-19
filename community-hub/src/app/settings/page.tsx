@@ -58,14 +58,14 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="pb-6 border-b border-white/10">
           <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
-            <SettingsIcon className="w-6 h-6 text-cyan-400" />
+            <SettingsIcon className="w-6 h-6 text-orange-400" />
             Profile & Settings
           </h1>
           <p className="text-xs text-slate-400 mt-1">
@@ -75,9 +75,9 @@ export default function SettingsPage() {
 
         <form onSubmit={handleSave} className="space-y-6">
           {/* Avatar & Basic Info */}
-          <div className="p-6 rounded-3xl border border-white/10 bg-[#0C1222] space-y-4">
+          <div className="p-6 rounded-3xl border border-white/10 bg-[#0D131F] space-y-4">
             <h3 className="font-heading text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <User className="w-4 h-4 text-cyan-400" />
+              <User className="w-4 h-4 text-orange-400" />
               Public Passport & Bio
             </h3>
 
@@ -85,11 +85,11 @@ export default function SettingsPage() {
               <img
                 src={user?.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80'}
                 alt={user?.full_name || 'User'}
-                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-cyan-400/30"
+                className="w-16 h-16 rounded-2xl object-cover ring-2 ring-orange-400/30"
               />
               <div className="space-y-1">
                 <p className="font-semibold text-sm text-white">{user?.full_name}</p>
-                <p className="text-xs font-mono text-cyan-400">@{user?.username || 'builder'}</p>
+                <p className="text-xs font-mono text-orange-400">@{user?.username || 'builder'}</p>
                 <p className="text-[10px] text-slate-400 font-mono">Karma: {user?.karma || 100}</p>
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function SettingsPage() {
                   type="text"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                 />
               </div>
 
@@ -111,7 +111,7 @@ export default function SettingsPage() {
                   type="text"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                 />
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function SettingsPage() {
                 type="text"
                 value={college}
                 onChange={(e) => setCollege(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
               />
             </div>
 
@@ -132,7 +132,7 @@ export default function SettingsPage() {
                 rows={3}
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
               />
             </div>
 
@@ -142,7 +142,7 @@ export default function SettingsPage() {
                 type="text"
                 value={skills}
                 onChange={(e) => setSkills(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
               />
             </div>
 
@@ -153,7 +153,7 @@ export default function SettingsPage() {
                   type="url"
                   value={githubUrl}
                   onChange={(e) => setGithubUrl(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                 />
               </div>
 
@@ -163,7 +163,7 @@ export default function SettingsPage() {
                   type="url"
                   value={portfolioUrl}
                   onChange={(e) => setPortfolioUrl(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                  className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                 />
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function SettingsPage() {
                   type="checkbox"
                   checked={isOpenToCollab}
                   onChange={(e) => setIsOpenToCollab(e.target.checked)}
-                  className="rounded border-white/20 bg-black/50 text-cyan-400"
+                  className="rounded border-white/20 bg-black/50 text-orange-400"
                 />
                 <span className="font-semibold text-white">Open to collaborate with squads & hackathons</span>
               </label>
@@ -182,7 +182,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Notifications Preferences */}
-          <div className="p-6 rounded-3xl border border-white/10 bg-[#0C1222] space-y-4">
+          <div className="p-6 rounded-3xl border border-white/10 bg-[#0D131F] space-y-4">
             <h3 className="font-heading text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Bell className="w-4 h-4 text-purple-400" />
               Notifications & Alerts
@@ -198,7 +198,7 @@ export default function SettingsPage() {
                   type="checkbox"
                   checked={notifyMentions}
                   onChange={(e) => setNotifyMentions(e.target.checked)}
-                  className="rounded border-white/20 bg-black/50 text-cyan-400"
+                  className="rounded border-white/20 bg-black/50 text-orange-400"
                 />
               </label>
 
@@ -211,7 +211,7 @@ export default function SettingsPage() {
                   type="checkbox"
                   checked={notifyInvites}
                   onChange={(e) => setNotifyInvites(e.target.checked)}
-                  className="rounded border-white/20 bg-black/50 text-cyan-400"
+                  className="rounded border-white/20 bg-black/50 text-orange-400"
                 />
               </label>
 
@@ -224,7 +224,7 @@ export default function SettingsPage() {
                   type="checkbox"
                   checked={notifyTasks}
                   onChange={(e) => setNotifyTasks(e.target.checked)}
-                  className="rounded border-white/20 bg-black/50 text-cyan-400"
+                  className="rounded border-white/20 bg-black/50 text-orange-400"
                 />
               </label>
             </div>
@@ -233,7 +233,7 @@ export default function SettingsPage() {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="px-6 py-3 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all flex items-center gap-1.5"
+              className="px-6 py-3 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all flex items-center gap-1.5"
             >
               <Save className="w-4 h-4" />
               Save Changes

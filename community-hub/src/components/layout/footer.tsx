@@ -2,24 +2,20 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Terminal, Shield, ExternalLink } from 'lucide-react';
+import { Shield, ExternalLink } from 'lucide-react';
 import { GithubIcon } from '@/components/ui/icons';
+import { BrandLogo } from '@/components/ui/brand-logo';
 
 export function Footer() {
   return (
     <footer className="w-full border-t border-white/[0.08] bg-[#050811] text-slate-400 py-12 px-4 sm:px-6 lg:px-8 mt-auto relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-white/[0.06]">
-          {/* Col 1: Brand & Campus Vision */}
+          {/* Col 1: Brand & Community Vision */}
           <div className="space-y-3 md:col-span-1">
-            <div className="flex items-center gap-2">
-              <div className="h-7 w-7 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center">
-                <Terminal className="w-4 h-4 text-cyan-400" />
-              </div>
-              <span className="font-heading text-base font-bold text-white tracking-tight">BuildSpace</span>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              The premier digital campus for developers, student builders, and hackathon competitors. Where breakthrough ideas unite with extraordinary squads.
+            <BrandLogo variant="compact" size="sm" showSubtitle={false} withGlow={true} />
+            <p className="text-xs text-slate-400 leading-relaxed pt-1">
+              Connect. Collaborate. Create. — Where Ideas Find Their Team. Join developers, innovators, and creators building something extraordinary together.
             </p>
             <div className="flex items-center gap-2 pt-1">
               <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
@@ -27,32 +23,32 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Digital Campus */}
+          {/* Col 2: Community Hubs */}
           <div className="space-y-2.5">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-mono">Platform</h4>
             <ul className="space-y-1.5 text-xs">
               <li>
-                <Link href="/dashboard" className="hover:text-cyan-400 transition-colors">
+                <Link href="/dashboard" className="hover:text-orange-400 transition-colors">
                   Personalized Feed
                 </Link>
               </li>
               <li>
-                <Link href="/ideas" className="hover:text-cyan-400 transition-colors">
-                  Idea Wall & Upvotes
+                <Link href="/ideas" className="hover:text-orange-400 transition-colors">
+                  Idea Wall & Discussions
                 </Link>
               </li>
               <li>
-                <Link href="/hackathons" className="hover:text-cyan-400 transition-colors">
-                  Hackathon Directory
+                <Link href="/hackathons" className="hover:text-orange-400 transition-colors">
+                  Hackathon Discovery
                 </Link>
               </li>
               <li>
-                <Link href="/teams" className="hover:text-cyan-400 transition-colors">
-                  Squad Finder & Invites
+                <Link href="/teams" className="hover:text-orange-400 transition-colors">
+                  Team Formation & Squads
                 </Link>
               </li>
               <li>
-                <Link href="/workspace" className="hover:text-cyan-400 transition-colors">
+                <Link href="/workspace" className="hover:text-orange-400 transition-colors">
                   Real-time Subgroup Rooms
                 </Link>
               </li>
@@ -64,22 +60,22 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-mono">Workspaces</h4>
             <ul className="space-y-1.5 text-xs">
               <li>
-                <Link href="/projects" className="hover:text-cyan-400 transition-colors">
+                <Link href="/projects" className="hover:text-orange-400 transition-colors">
                   Kanban Boards & Sprints
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className="hover:text-cyan-400 transition-colors">
+                <Link href="/resources" className="hover:text-orange-400 transition-colors">
                   Presentations & PPT Library
                 </Link>
               </li>
               <li>
-                <Link href="/members" className="hover:text-cyan-400 transition-colors">
-                  Skill-based Matchmaking
+                <Link href="/members" className="hover:text-orange-400 transition-colors">
+                  Member Directory & Skills
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-cyan-400 transition-colors">
+                <Link href="/admin" className="hover:text-orange-400 transition-colors">
                   Community Safety & Reports
                 </Link>
               </li>
@@ -91,8 +87,8 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-mono">Architecture</h4>
             <div className="space-y-2 text-xs">
               <div className="p-2.5 rounded-xl border border-white/5 bg-white/[0.02]">
-                <div className="flex items-center gap-1.5 text-cyan-300 font-mono text-[11px] mb-1">
-                  <Shield className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-1.5 text-orange-300 font-mono text-[11px] mb-1">
+                  <Shield className="w-3.5 h-3.5 text-orange-400" />
                   PostgreSQL Row-Level Security
                 </div>
                 <p className="text-[10px] text-slate-500">
@@ -107,7 +103,7 @@ export function Footer() {
                   rel="noreferrer"
                   className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-white transition-colors"
                 >
-                  <GithubIcon className="w-4 h-4 text-cyan-400" />
+                  <GithubIcon className="w-4 h-4 text-orange-400" />
                   GitHub Repository
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
@@ -118,7 +114,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© 2026 BuildSpace. Crafted for dreamers, hackers & builders worldwide.</p>
+          <p>© 2026 FIE COMMUNITY. All rights reserved. Where Ideas Find Their Team.</p>
           <div className="flex items-center gap-4 text-[11px] font-mono text-slate-500">
             <span>Next.js 16 App Router</span>
             <span>·</span>

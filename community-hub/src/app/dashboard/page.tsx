@@ -71,25 +71,25 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Welcome Header & Action bar */}
-        <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-r from-[#0C152C] via-[#091024] to-[#070B14] shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+        <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-r from-[#111722] via-[#0D131F] to-[#080B10] shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4">
             <img
               src={user?.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80'}
               alt={user?.full_name || 'Builder'}
-              className="w-16 h-16 rounded-2xl object-cover ring-2 ring-cyan-400/40 shadow-[0_0_20px_rgba(0,240,255,0.2)]"
+              className="w-16 h-16 rounded-2xl object-cover ring-2 ring-orange-400/40 shadow-[0_0_20px_rgba(249,115,22,0.2)]"
             />
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
                   Welcome back, {user?.full_name?.split(' ')[0] || 'Builder'}! 👋
                 </h1>
-                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-full bg-orange-500/15 text-orange-300 border border-orange-500/30">
                   <Sparkles className="w-3 h-3" /> Karma {user?.karma || 100}
                 </span>
               </div>
@@ -103,7 +103,7 @@ export default function DashboardPage() {
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               href="/ideas?new=true"
-              className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+              className="px-4 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-black hover:bg-cyan-300 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(249,115,22,0.3)]"
             >
               <Lightbulb className="w-3.5 h-3.5" />
               Publish Idea
@@ -113,7 +113,7 @@ export default function DashboardPage() {
               href="/teams?new=true"
               className="px-4 py-2 rounded-xl text-xs font-semibold border border-white/10 bg-white/5 hover:bg-white/10 text-white transition-colors flex items-center gap-1.5"
             >
-              <PlusCircle className="w-3.5 h-3.5 text-cyan-400" />
+              <PlusCircle className="w-3.5 h-3.5 text-orange-400" />
               Create Squad
             </Link>
 
@@ -130,7 +130,7 @@ export default function DashboardPage() {
         {/* Join with Code Modal */}
         {showCodeModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-cyan-500/30 rounded-2xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-orange-500/30 rounded-2xl p-6 shadow-2xl">
               <h3 className="font-heading text-lg font-bold text-white">Join Squad with Invite Code</h3>
               <p className="text-xs text-slate-400 mt-1">
                 Enter the secret invitation code shared by the team founder or admin.
@@ -143,7 +143,7 @@ export default function DashboardPage() {
                   onChange={(e) => setInviteCodeInput(e.target.value.toUpperCase())}
                   placeholder="e.g. NEXUS-2026-ALPHA"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-black/50 text-white font-mono text-center tracking-wider text-sm focus:outline-none focus:border-cyan-400"
+                  className="w-full px-4 py-2.5 rounded-xl border border-white/15 bg-black/50 text-white font-mono text-center tracking-wider text-sm focus:outline-none focus:border-orange-400"
                 />
 
                 <div className="flex items-center justify-end gap-2">
@@ -156,7 +156,7 @@ export default function DashboardPage() {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 font-heading"
+                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-black hover:bg-cyan-300 font-heading"
                   >
                     Enter Squad Workspace
                   </button>
@@ -173,8 +173,8 @@ export default function DashboardPage() {
               <p className="text-[11px] font-mono uppercase text-slate-400">My Squads</p>
               <p className="font-heading text-2xl font-bold text-white mt-0.5">{teams.length}</p>
             </div>
-            <div className="h-10 w-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-              <Users className="w-5 h-5 text-cyan-400" />
+            <div className="h-10 w-10 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
+              <Users className="w-5 h-5 text-orange-400" />
             </div>
           </div>
 
@@ -217,12 +217,12 @@ export default function DashboardPage() {
             <div className="rounded-2xl border border-white/10 bg-[#0A1020] p-5">
               <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <MessagesSquare className="w-4 h-4 text-cyan-400" />
+                  <MessagesSquare className="w-4 h-4 text-orange-400" />
                   <h2 className="font-heading text-sm font-bold text-white uppercase tracking-wider">
                     {activeTeam ? `${activeTeam.name} Collaboration Rooms` : 'Subgroup Rooms'}
                   </h2>
                 </div>
-                <Link href="/workspace" className="text-xs text-cyan-400 hover:underline font-medium">
+                <Link href="/workspace" className="text-xs text-orange-400 hover:underline font-medium">
                   Enter Workspace →
                 </Link>
               </div>
@@ -232,12 +232,12 @@ export default function DashboardPage() {
                   <button
                     key={room.id}
                     onClick={() => jumpToRoom(activeTeam.id, room.id)}
-                    className="p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-cyan-500/30 text-left transition-all flex items-center justify-between group"
+                    className="p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] hover:border-orange-500/30 text-left transition-all flex items-center justify-between group"
                   >
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-cyan-400 font-bold">#</span>
-                        <span className="text-sm font-semibold text-white group-hover:text-cyan-300">
+                        <span className="font-mono text-orange-400 font-bold">#</span>
+                        <span className="text-sm font-semibold text-white group-hover:text-orange-300">
                           {room.name}
                         </span>
                         {room.category === 'ppt_docs' && (
@@ -249,7 +249,7 @@ export default function DashboardPage() {
                       <p className="text-[11px] text-slate-400 mt-1 line-clamp-1">{room.topic}</p>
                     </div>
 
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-orange-400 group-hover:translate-x-1 transition-all shrink-0 ml-2" />
                   </button>
                 ))}
               </div>
@@ -282,7 +282,7 @@ export default function DashboardPage() {
                             ? 'bg-rose-500'
                             : task.priority === 'high'
                             ? 'bg-amber-400'
-                            : 'bg-cyan-400'
+                            : 'bg-orange-500'
                         }`}
                       />
                       <div className="truncate">
@@ -340,7 +340,7 @@ export default function DashboardPage() {
                   <div className="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs space-y-1">
                     <div className="flex justify-between text-slate-400">
                       <span>Prize Pool:</span>
-                      <span className="text-cyan-300 font-bold font-mono">{hackathons[0].prize_pool}</span>
+                      <span className="text-orange-300 font-bold font-mono">{hackathons[0].prize_pool}</span>
                     </div>
                     <div className="flex justify-between text-slate-400">
                       <span>Deadline:</span>
@@ -363,12 +363,12 @@ export default function DashboardPage() {
             <div className="rounded-2xl border border-white/10 bg-[#0A1020] p-5">
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
                 <div className="flex items-center gap-2">
-                  <Flame className="w-4 h-4 text-cyan-400" />
+                  <Flame className="w-4 h-4 text-orange-400" />
                   <h3 className="font-heading text-xs font-bold text-white uppercase tracking-wider">
                     Trending On Campus
                   </h3>
                 </div>
-                <Link href="/ideas" className="text-[11px] text-cyan-400 hover:underline">
+                <Link href="/ideas" className="text-[11px] text-orange-400 hover:underline">
                   View all
                 </Link>
               </div>
@@ -380,12 +380,12 @@ export default function DashboardPage() {
                     href="/ideas"
                     className="block p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.06] transition-colors group"
                   >
-                    <p className="text-xs font-semibold text-white group-hover:text-cyan-300 line-clamp-1">
+                    <p className="text-xs font-semibold text-white group-hover:text-orange-300 line-clamp-1">
                       {idea.title}
                     </p>
                     <div className="flex items-center justify-between text-[10px] text-slate-400 mt-1">
                       <span>{idea.category}</span>
-                      <span className="text-cyan-400 font-mono">▲ {idea.upvotes_count}</span>
+                      <span className="text-orange-400 font-mono">▲ {idea.upvotes_count}</span>
                     </div>
                   </Link>
                 ))}

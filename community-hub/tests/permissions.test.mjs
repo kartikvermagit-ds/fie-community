@@ -42,7 +42,7 @@ function calculateProjectProgress(tasks) {
   return Math.round((done / tasks.length) * 100);
 }
 
-describe('BuildSpace Security & Permissions Suite', () => {
+describe('FIE Community Security & Permissions Suite', () => {
   const team = {
     id: 'team_nexus',
     ownerId: 'usr_alex',

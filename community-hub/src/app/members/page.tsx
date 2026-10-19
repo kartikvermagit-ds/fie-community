@@ -72,7 +72,7 @@ export default function MembersPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -80,7 +80,7 @@ export default function MembersPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-orange-400 uppercase tracking-wider mb-1">
               <Users className="w-3.5 h-3.5" /> Digital Campus Directory
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -101,7 +101,7 @@ export default function MembersPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, college (Stanford, IIT), or tech stack (Rust, Next.js)..."
-              className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
             />
           </div>
 
@@ -110,7 +110,7 @@ export default function MembersPage() {
               type="checkbox"
               checked={onlyOpenCollab}
               onChange={(e) => setOnlyOpenCollab(e.target.checked)}
-              className="rounded border-white/20 bg-black/50 text-cyan-400 focus:ring-0"
+              className="rounded border-white/20 bg-black/50 text-orange-400 focus:ring-0"
             />
             <span>Show only "Open to Collaborate"</span>
           </label>
@@ -121,7 +121,7 @@ export default function MembersPage() {
           {filteredMembers.map((member) => (
             <div
               key={member.id}
-              className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-cyan-500/40 relative"
+              className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-orange-500/40 relative"
             >
               <div>
                 {/* Avatar and Info Header */}
@@ -130,16 +130,16 @@ export default function MembersPage() {
                     <img
                       src={member.avatar_url}
                       alt={member.full_name}
-                      className="w-12 h-12 rounded-2xl object-cover ring-2 ring-cyan-500/30 shrink-0"
+                      className="w-12 h-12 rounded-2xl object-cover ring-2 ring-orange-500/30 shrink-0"
                     />
                     <div>
                       <h3
                         onClick={() => setSelectedProfile(member)}
-                        className="font-heading text-lg font-bold text-white group-hover:text-cyan-300 transition-colors cursor-pointer"
+                        className="font-heading text-lg font-bold text-white group-hover:text-orange-300 transition-colors cursor-pointer"
                       >
                         {member.full_name}
                       </h3>
-                      <p className="text-xs text-cyan-400 font-medium">{member.role}</p>
+                      <p className="text-xs text-orange-400 font-medium">{member.role}</p>
                     </div>
                   </div>
 
@@ -211,7 +211,7 @@ export default function MembersPage() {
 
                 <button
                   onClick={() => setShowInviteModal(member)}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 font-heading transition-all flex items-center gap-1 shadow-[0_0_10px_rgba(0,240,255,0.2)]"
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 font-heading transition-all flex items-center gap-1 shadow-[0_0_10px_rgba(249,115,22,0.2)]"
                 >
                   <PlusCircle className="w-3.5 h-3.5" />
                   Invite to Squad
@@ -224,7 +224,7 @@ export default function MembersPage() {
         {/* MEMBER PROFILE DETAIL MODAL */}
         {selectedProfile && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-lg bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+            <div className="w-full max-w-lg bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
               <button
                 onClick={() => setSelectedProfile(null)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -236,13 +236,13 @@ export default function MembersPage() {
                 <img
                   src={selectedProfile.avatar_url}
                   alt={selectedProfile.full_name}
-                  className="w-16 h-16 rounded-2xl object-cover ring-2 ring-cyan-400/40"
+                  className="w-16 h-16 rounded-2xl object-cover ring-2 ring-orange-400/40"
                 />
                 <div>
                   <h3 className="font-heading text-xl font-bold text-white">
                     {selectedProfile.full_name}
                   </h3>
-                  <p className="text-xs text-cyan-400">{selectedProfile.headline || selectedProfile.role}</p>
+                  <p className="text-xs text-orange-400">{selectedProfile.headline || selectedProfile.role}</p>
                   <p className="text-[11px] text-slate-400 font-mono mt-0.5">
                     {selectedProfile.college} · Member since 2026
                   </p>
@@ -259,7 +259,7 @@ export default function MembersPage() {
                   <h4 className="font-mono uppercase text-slate-400 font-bold text-[10px] mb-1">Skills & Tools</h4>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedProfile.skills.map((s) => (
-                      <span key={s} className="px-2.5 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 font-mono">
+                      <span key={s} className="px-2.5 py-1 rounded-lg bg-orange-500/10 text-orange-300 font-mono">
                         {s}
                       </span>
                     ))}
@@ -284,7 +284,7 @@ export default function MembersPage() {
                       setSelectedProfile(null);
                       setShowInviteModal(p);
                     }}
-                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 font-heading"
+                    className="px-5 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 font-heading"
                   >
                     Invite to Squad
                   </button>
@@ -297,7 +297,7 @@ export default function MembersPage() {
         {/* INVITE TO SQUAD MODAL */}
         {showInviteModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
                 <h3 className="font-heading text-lg font-bold text-white">Invite to Squad</h3>
                 <button onClick={() => setShowInviteModal(null)} className="text-slate-400 hover:text-white">
@@ -306,7 +306,7 @@ export default function MembersPage() {
               </div>
 
               <p className="text-xs text-slate-300 mb-4">
-                Send an official invitation to <span className="text-cyan-300 font-semibold">{showInviteModal.full_name}</span>.
+                Send an official invitation to <span className="text-orange-300 font-semibold">{showInviteModal.full_name}</span>.
               </p>
 
               <form onSubmit={handleSendInvite} className="space-y-4 text-xs">
@@ -315,7 +315,7 @@ export default function MembersPage() {
                   <select
                     value={selectedTeamId}
                     onChange={(e) => setSelectedTeamId(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                   >
                     {teams.map((t) => (
                       <option key={t.id} value={t.id}>
@@ -348,7 +348,7 @@ export default function MembersPage() {
         {/* REPORT ABUSE MODAL */}
         {showReportModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-rose-500/30 rounded-3xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-rose-500/30 rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
                 <h3 className="font-heading text-lg font-bold text-white">Report Content or User</h3>
                 <button onClick={() => setShowReportModal(null)} className="text-slate-400 hover:text-white">

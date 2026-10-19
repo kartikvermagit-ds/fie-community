@@ -26,7 +26,7 @@ export default function AdminPage() {
       id: 'rep_sample_1',
       reporter: {
         id: 'usr_sarah',
-        email: 'sarah@buildspace.dev',
+        email: 'sarah@fiecommunity.dev',
         username: 'sarahlin',
         full_name: 'Sarah Lin',
         avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&h=256&q=80',
@@ -57,7 +57,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -99,7 +99,7 @@ export default function AdminPage() {
 
           <div className="p-4 rounded-2xl border border-white/10 bg-[#0A1020]">
             <p className="text-[11px] font-mono uppercase text-slate-400">Active Squad Audits</p>
-            <p className="font-heading text-2xl font-bold text-cyan-400 mt-0.5">24</p>
+            <p className="font-heading text-2xl font-bold text-orange-400 mt-0.5">24</p>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function AdminPage() {
           </h2>
 
           {activeReports.length === 0 ? (
-            <div className="p-12 rounded-3xl border border-white/10 bg-[#0C1222] text-center space-y-2">
+            <div className="p-12 rounded-3xl border border-white/10 bg-[#0D131F] text-center space-y-2">
               <ShieldCheck className="w-12 h-12 text-emerald-400 mx-auto" />
               <h3 className="font-heading text-base font-bold text-white">Queue Clear</h3>
               <p className="text-xs text-slate-400 max-w-sm mx-auto">
@@ -123,7 +123,7 @@ export default function AdminPage() {
               {activeReports.map((rep) => (
                 <div
                   key={rep.id}
-                  className="p-5 rounded-2xl border border-amber-500/30 bg-[#0C1222] space-y-3"
+                  className="p-5 rounded-2xl border border-amber-500/30 bg-[#0D131F] space-y-3"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
@@ -164,7 +164,7 @@ export default function AdminPage() {
         </div>
 
         {/* Community Guidelines Checklist */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-[#090E1D] space-y-3">
+        <div className="p-6 rounded-3xl border border-white/10 bg-[#0D131F] space-y-3">
           <h3 className="font-heading text-sm font-bold text-white uppercase tracking-wider">
             Campus Collaboration Standards
           </h3>

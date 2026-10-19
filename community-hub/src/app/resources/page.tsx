@@ -109,7 +109,7 @@ export default function ResourcesPage() {
       case 'presentation':
         return <Presentation className="w-5 h-5 text-indigo-400" />;
       case 'document':
-        return <FileText className="w-5 h-5 text-cyan-400" />;
+        return <FileText className="w-5 h-5 text-orange-400" />;
       case 'code':
         return <FileCode className="w-5 h-5 text-purple-400" />;
       case 'image':
@@ -122,7 +122,7 @@ export default function ResourcesPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -143,7 +143,7 @@ export default function ResourcesPage() {
 
           <button
             onClick={() => setShowUploadModal(true)}
-            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0 self-start md:self-auto"
+            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.4)] shrink-0 self-start md:self-auto"
           >
             <UploadCloud className="w-4 h-4" />
             Upload File / PPT
@@ -178,7 +178,7 @@ export default function ResourcesPage() {
               onClick={() => setCategoryFilter('document')}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1 ${
                 categoryFilter === 'document'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                  ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -204,7 +204,7 @@ export default function ResourcesPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search documents or decks..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
             />
           </div>
         </div>
@@ -226,7 +226,7 @@ export default function ResourcesPage() {
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-300 border border-orange-500/20">
                         {file.version}
                       </span>
                       <span className="text-[10px] font-mono text-slate-400 uppercase">
@@ -297,7 +297,7 @@ export default function ResourcesPage() {
         {/* PRESENTATION PREVIEW MODAL */}
         {previewingFile && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-4xl bg-[#0C1222] border border-indigo-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
+            <div className="w-full max-w-4xl bg-[#0D131F] border border-indigo-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
               <button
                 onClick={() => setPreviewingFile(null)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -311,7 +311,7 @@ export default function ResourcesPage() {
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">
                       {previewingFile.category.toUpperCase()}
                     </span>
-                    <span className="text-xs font-mono text-cyan-400">{previewingFile.version}</span>
+                    <span className="text-xs font-mono text-orange-400">{previewingFile.version}</span>
                   </div>
                   <h3 className="font-heading text-xl font-bold text-white mt-1">
                     {previewingFile.name}
@@ -320,7 +320,7 @@ export default function ResourcesPage() {
 
                 <button
                   onClick={() => handleDownload(previewingFile)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 flex items-center gap-1.5 font-heading"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 flex items-center gap-1.5 font-heading"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Download File
@@ -334,7 +334,7 @@ export default function ResourcesPage() {
                   <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-cyan-400/10 blur-[60px]" />
 
                   <div className="flex justify-between items-center text-xs text-slate-400 font-mono">
-                    <span>BUILDSPACE DIGITAL CAMPUS</span>
+                    <span>FIE COMMUNITY · DIGITAL CAMPUS</span>
                     <span>SLIDE 3 OF 12 · OFFICIAL PITCH DECK</span>
                   </div>
 
@@ -342,12 +342,12 @@ export default function ResourcesPage() {
                     <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                       Decentralized Edge Topology
                     </h2>
-                    <p className="text-sm text-cyan-300 max-w-xl leading-relaxed">
+                    <p className="text-sm text-orange-300 max-w-xl leading-relaxed">
                       "Autonomous micro-LLMs run concurrently across browser WebAssembly runtimes, chunking and streaming tokens over peer-to-peer WebRTC data channels with zero central server latency."
                     </p>
                     <div className="grid grid-cols-3 gap-3 pt-2 font-mono text-xs text-slate-300">
                       <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
-                        <p className="text-cyan-400 font-bold text-base">&lt; 8ms</p>
+                        <p className="text-orange-400 font-bold text-base">&lt; 8ms</p>
                         <p className="text-[10px] text-slate-400">Mesh Latency</p>
                       </div>
                       <div className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
@@ -388,7 +388,7 @@ export default function ResourcesPage() {
                       value={slideComment}
                       onChange={(e) => setSlideComment(e.target.value)}
                       placeholder="Add slide critique or timing advice..."
-                      className="flex-1 px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white focus:outline-none focus:border-cyan-400"
+                      className="flex-1 px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white focus:outline-none focus:border-orange-400"
                     />
                     <button
                       type="submit"
@@ -407,7 +407,7 @@ export default function ResourcesPage() {
         {/* UPLOAD FILE MODAL */}
         {showUploadModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-lg bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+            <div className="w-full max-w-lg bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
               <button
                 onClick={() => setShowUploadModal(false)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -424,8 +424,8 @@ export default function ResourcesPage() {
 
               <form onSubmit={handleUploadSubmit} className="space-y-4 text-xs">
                 {/* Drag-and-drop dropzone mock */}
-                <div className="p-6 rounded-2xl border-2 border-dashed border-cyan-500/30 bg-cyan-500/[0.02] text-center hover:bg-cyan-500/[0.05] transition-colors cursor-pointer">
-                  <UploadCloud className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
+                <div className="p-6 rounded-2xl border-2 border-dashed border-orange-500/30 bg-orange-500/[0.02] text-center hover:bg-orange-500/[0.05] transition-colors cursor-pointer">
+                  <UploadCloud className="w-8 h-8 text-orange-400 mx-auto mb-2" />
                   <p className="font-medium text-white">Drag and drop file here, or click to select</p>
                   <p className="text-[10px] text-slate-400 mt-1 font-mono">
                     Supported: PPT, PPTX, PDF, DOCX, ZIP, PNG, RS (Max 50MB)
@@ -443,7 +443,7 @@ export default function ResourcesPage() {
                     }}
                     placeholder="e.g. Nexus_Core_Pitch_Auditorium_v4.pptx"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -453,7 +453,7 @@ export default function ResourcesPage() {
                     <select
                       value={fileCategory}
                       onChange={(e) => setFileCategory(e.target.value as FileCategory)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       <option value="presentation">Presentation (PPT/PPTX)</option>
                       <option value="document">Document (PDF/DOCX)</option>
@@ -470,7 +470,7 @@ export default function ResourcesPage() {
                       value={fileVersion}
                       onChange={(e) => setFileVersion(e.target.value)}
                       placeholder="e.g. v3.2-final"
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -482,7 +482,7 @@ export default function ResourcesPage() {
                     value={fileDescription}
                     onChange={(e) => setFileDescription(e.target.value)}
                     placeholder="Brief description for teammates..."
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 

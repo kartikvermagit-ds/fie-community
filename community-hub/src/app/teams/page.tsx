@@ -122,7 +122,7 @@ function TeamsContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -130,7 +130,7 @@ function TeamsContent() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-orange-400 uppercase tracking-wider mb-1">
               <Users className="w-3.5 h-3.5" /> Campus Squads & Subgroups
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -143,7 +143,7 @@ function TeamsContent() {
 
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0 self-start md:self-auto"
+            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.4)] shrink-0 self-start md:self-auto"
           >
             <PlusCircle className="w-4 h-4" />
             Create New Squad
@@ -157,7 +157,7 @@ function TeamsContent() {
               onClick={() => setActiveTab('all')}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeTab === 'all'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                  ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -167,7 +167,7 @@ function TeamsContent() {
               onClick={() => setActiveTab('my_teams')}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeTab === 'my_teams'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                  ? 'bg-orange-500/20 text-orange-300 border border-orange-500/40'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -197,7 +197,7 @@ function TeamsContent() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Filter squads or skills..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+              className="w-full pl-9 pr-3 py-1.5 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
             />
           </div>
         </div>
@@ -212,7 +212,7 @@ function TeamsContent() {
               return (
                 <div
                   key={team.id}
-                  className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-cyan-500/40"
+                  className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-orange-500/40"
                 >
                   <div>
                     {/* Top row: Icon, Category & Visibility */}
@@ -224,10 +224,10 @@ function TeamsContent() {
                           className="w-11 h-11 rounded-xl object-cover ring-2 ring-white/10"
                         />
                         <div>
-                          <h3 className="font-heading text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                          <h3 className="font-heading text-lg font-bold text-white group-hover:text-orange-300 transition-colors">
                             {team.name}
                           </h3>
-                          <span className="text-[10px] font-mono text-cyan-400">{team.category}</span>
+                          <span className="text-[10px] font-mono text-orange-400">{team.category}</span>
                         </div>
                       </div>
 
@@ -260,7 +260,7 @@ function TeamsContent() {
                     {/* Subgroups count */}
                     <div className="mt-3 p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-xs">
                       <div className="flex items-center gap-1.5 text-slate-400">
-                        <MessagesSquare className="w-3.5 h-3.5 text-cyan-400" />
+                        <MessagesSquare className="w-3.5 h-3.5 text-orange-400" />
                         <span>Subgroup Rooms:</span>
                       </div>
                       <span className="font-mono text-white font-semibold">{team.rooms.length} active</span>
@@ -307,7 +307,7 @@ function TeamsContent() {
                     {isMember ? (
                       <button
                         onClick={() => enterWorkspace(team)}
-                        className="w-full py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center justify-center gap-1.5 font-heading shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                        className="w-full py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center justify-center gap-1.5 font-heading shadow-[0_0_15px_rgba(249,115,22,0.3)]"
                       >
                         <MessagesSquare className="w-3.5 h-3.5" />
                         Enter Squad Workspace
@@ -361,7 +361,7 @@ function TeamsContent() {
                 {joinRequests.map((req) => (
                   <div
                     key={req.id}
-                    className="p-5 rounded-2xl border border-white/10 bg-[#0C1222] flex flex-col md:flex-row md:items-center justify-between gap-4"
+                    className="p-5 rounded-2xl border border-white/10 bg-[#0D131F] flex flex-col md:flex-row md:items-center justify-between gap-4"
                   >
                     <div className="flex items-start gap-3">
                       <img
@@ -372,7 +372,7 @@ function TeamsContent() {
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="font-semibold text-sm text-white">{req.user.full_name}</span>
-                          <span className="text-[10px] font-mono text-cyan-300 px-2 py-0.5 rounded bg-cyan-500/10">
+                          <span className="text-[10px] font-mono text-orange-300 px-2 py-0.5 rounded bg-orange-500/10">
                             {req.user.role}
                           </span>
                         </div>
@@ -392,7 +392,7 @@ function TeamsContent() {
                       </button>
                       <button
                         onClick={() => approveJoinRequest(req.id)}
-                        className="px-4 py-1.5 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 font-heading transition-colors"
+                        className="px-4 py-1.5 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 font-heading transition-colors"
                       >
                         Accept Member
                       </button>
@@ -407,7 +407,7 @@ function TeamsContent() {
         {/* INVITE CODE MODAL */}
         {showInviteModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
                 <h3 className="font-heading text-lg font-bold text-white">Invite to {showInviteModal.name}</h3>
                 <button onClick={() => setShowInviteModal(null)} className="text-slate-400 hover:text-white">
@@ -419,9 +419,9 @@ function TeamsContent() {
                 Share this unique invite code or link with your teammates. Anyone with this code can enter your squad workspace immediately.
               </p>
 
-              <div className="p-4 rounded-xl border border-cyan-500/30 bg-black/50 text-center space-y-2 mb-4">
+              <div className="p-4 rounded-xl border border-orange-500/30 bg-black/50 text-center space-y-2 mb-4">
                 <p className="text-[10px] font-mono uppercase text-slate-400">Secret Invite Code</p>
-                <p className="font-mono text-xl font-extrabold text-cyan-400 tracking-wider">
+                <p className="font-mono text-xl font-extrabold text-orange-400 tracking-wider">
                   {showInviteModal.invite_code}
                 </p>
               </div>
@@ -448,7 +448,7 @@ function TeamsContent() {
         {/* REQUEST TO JOIN MODAL */}
         {showJoinRequestModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-md bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 shadow-2xl">
               <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
                 <h3 className="font-heading text-lg font-bold text-white">
                   Request to Join {showJoinRequestModal.name}
@@ -469,7 +469,7 @@ function TeamsContent() {
                     onChange={(e) => setJoinRequestMsg(e.target.value)}
                     placeholder="Hi! I have extensive experience in Rust and WebSockets. I'd love to help tackle the backend telemetry..."
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -496,7 +496,7 @@ function TeamsContent() {
         {/* CREATE SQUAD MODAL */}
         {showCreateModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-xl bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+            <div className="w-full max-w-xl bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
               <button
                 onClick={() => setShowCreateModal(false)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -520,7 +520,7 @@ function TeamsContent() {
                     onChange={(e) => setTeamName(e.target.value)}
                     placeholder="e.g. Nexus Core / Quantum Labs"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -532,7 +532,7 @@ function TeamsContent() {
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="What is this squad building together?"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -542,7 +542,7 @@ function TeamsContent() {
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value as IdeaCategory)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       <option value="AI & Machine Learning">AI & Machine Learning</option>
                       <option value="Web3 & Blockchain">Web3 & Blockchain</option>
@@ -557,7 +557,7 @@ function TeamsContent() {
                     <select
                       value={visibility}
                       onChange={(e) => setVisibility(e.target.value as TeamVisibility)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       <option value="approval_required">Approval Required</option>
                       <option value="public">Open & Public</option>
@@ -574,7 +574,7 @@ function TeamsContent() {
                       value={desiredSkills}
                       onChange={(e) => setDesiredSkills(e.target.value)}
                       placeholder="e.g. Next.js, Rust, Figma"
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
 
@@ -586,7 +586,7 @@ function TeamsContent() {
                       max={12}
                       value={maxMembers}
                       onChange={(e) => setMaxMembers(Number(e.target.value))}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -601,7 +601,7 @@ function TeamsContent() {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                    className="px-6 py-2 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)]"
                   >
                     Create Squad & Workspace
                   </button>
@@ -619,7 +619,7 @@ function TeamsContent() {
 
 export default function TeamsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#070B14]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#080B10]" />}>
       <TeamsContent />
     </Suspense>
   );

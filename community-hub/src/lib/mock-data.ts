@@ -14,7 +14,7 @@ import {
 export const MOCK_USERS: UserProfile[] = [
   {
     id: 'usr_alex',
-    email: 'alex.chen@buildspace.dev',
+    email: 'alex.chen@fiecommunity.dev',
     username: 'alexchen',
     full_name: 'Alex Chen',
     avatar_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80',
@@ -32,7 +32,7 @@ export const MOCK_USERS: UserProfile[] = [
   },
   {
     id: 'usr_sarah',
-    email: 'sarah.lin@buildspace.dev',
+    email: 'sarah.lin@fiecommunity.dev',
     username: 'sarahlin',
     full_name: 'Sarah Lin',
     avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&h=256&q=80',
@@ -50,7 +50,7 @@ export const MOCK_USERS: UserProfile[] = [
   },
   {
     id: 'usr_marcus',
-    email: 'marcus.brody@buildspace.dev',
+    email: 'marcus.brody@fiecommunity.dev',
     username: 'marcusbrody',
     full_name: 'Marcus Brody',
     avatar_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80',
@@ -68,7 +68,7 @@ export const MOCK_USERS: UserProfile[] = [
   },
   {
     id: 'usr_priya',
-    email: 'priya.sharma@buildspace.dev',
+    email: 'priya.sharma@fiecommunity.dev',
     username: 'priyasharma',
     full_name: 'Priya Sharma',
     avatar_url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=256&h=256&q=80',
@@ -86,7 +86,7 @@ export const MOCK_USERS: UserProfile[] = [
   },
   {
     id: 'usr_elena',
-    email: 'elena.rostova@buildspace.dev',
+    email: 'elena.rostova@fiecommunity.dev',
     username: 'elenarostova',
     full_name: 'Elena Rostova',
     avatar_url: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=256&h=256&q=80',
@@ -513,7 +513,7 @@ export const MOCK_PROJECTS: Project[] = [
     description: 'Autonomous peer-to-peer micro-LLM orchestrator running directly inside modern browser runtimes and native edge daemons.',
     tech_stack: ['Next.js 16', 'TypeScript', 'Rust', 'WebAssembly', 'WebRTC', 'Supabase'],
     github_url: 'https://github.com/nexus-core/neuropulse-engine',
-    demo_url: 'https://neuropulse.buildspace.dev',
+    demo_url: 'https://neuropulse.fiecommunity.dev',
     banner_url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
     status: 'in_progress',
     progress_percent: 68,
@@ -705,7 +705,7 @@ export const MOCK_NOTIFICATIONS: AppNotification[] = [
     is_read: false,
     actor: {
       id: 'usr_david',
-      email: 'david.kim@buildspace.dev',
+      email: 'david.kim@fiecommunity.dev',
       username: 'davidkim',
       full_name: 'David Kim',
       avatar_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=256&h=256&q=80',
@@ -760,7 +760,7 @@ export const MOCK_JOIN_REQUESTS: JoinRequest[] = [
     team_name: 'Nexus Core',
     user: {
       id: 'usr_david',
-      email: 'david.kim@buildspace.dev',
+      email: 'david.kim@fiecommunity.dev',
       username: 'davidkim',
       full_name: 'David Kim',
       avatar_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=256&h=256&q=80',

@@ -7,11 +7,12 @@ import { useAuth } from '@/lib/auth-context';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ToastContainer } from '@/components/ui/toast-container';
-import { Terminal, Sparkles, ArrowRight, Lock, Mail } from 'lucide-react';
+import { BrandLogo } from '@/components/ui/brand-logo';
+import { Sparkles, ArrowRight, Lock, Mail } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, switchDemoUser, availableDemoUsers, isDemoMode } = useAuth();
+  const { login, switchDemoUser, availableDemoUsers } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,21 +42,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-[#F8FAFC] relative">
       <Navbar />
       <ToastContainer />
 
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative z-10">
         <div className="w-full max-w-md">
           {/* Card */}
-          <div className="rounded-3xl border border-white/10 bg-[#0C1222]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
+          <div className="rounded-3xl border border-white/10 bg-[#0D131F]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
             <div className="text-center mb-6">
-              <div className="h-10 w-10 mx-auto rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(0,240,255,0.3)]">
-                <Terminal className="w-5 h-5 text-cyan-400" />
+              <div className="flex justify-center mb-4">
+                <BrandLogo variant="symbol" size="lg" withGlow={true} />
               </div>
               <h1 className="font-heading text-2xl font-bold text-white tracking-tight">Welcome Back</h1>
               <p className="text-xs text-slate-400 mt-1">
-                Sign in to your BuildSpace digital campus account
+                Sign in to your FIE COMMUNITY account
               </p>
             </div>
 
@@ -74,9 +75,9 @@ export default function LoginPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="alex.chen@buildspace.dev"
+                    placeholder="alex.chen@fiecommunity.dev"
                     required
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors"
                   />
                 </div>
               </div>
@@ -84,7 +85,7 @@ export default function LoginPage() {
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="block text-xs font-medium text-slate-300">Password</label>
-                  <Link href="/auth/recovery" className="text-[11px] text-cyan-400 hover:underline">
+                  <Link href="/auth/recovery" className="text-[11px] text-orange-400 hover:underline">
                     Forgot password?
                   </Link>
                 </div>
@@ -96,7 +97,7 @@ export default function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors"
                   />
                 </div>
               </div>
@@ -104,7 +105,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {loading ? 'Signing in...' : 'Sign In'}
                 <ArrowRight className="w-4 h-4" />
@@ -120,7 +121,7 @@ export default function LoginPage() {
             {/* Quick Demo Switcher Buttons */}
             <div className="space-y-2">
               <p className="text-[11px] text-center text-slate-400 flex items-center justify-center gap-1.5 font-medium">
-                <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                <Sparkles className="w-3.5 h-3.5 text-orange-400" />
                 Select a persona to test roles & permissions:
               </p>
 
@@ -129,7 +130,7 @@ export default function LoginPage() {
                   <button
                     key={p.id}
                     onClick={() => handleQuickDemoLogin(p.id)}
-                    className="p-2 rounded-xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-cyan-500/30 text-left transition-all flex items-center gap-2 group"
+                    className="p-2 rounded-xl border border-white/5 bg-white/[0.03] hover:bg-white/[0.08] hover:border-orange-500/30 text-left transition-all flex items-center gap-2 group"
                   >
                     <img
                       src={p.avatar_url}
@@ -137,7 +138,7 @@ export default function LoginPage() {
                       className="w-7 h-7 rounded-full object-cover border border-white/10 shrink-0"
                     />
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-white truncate group-hover:text-cyan-300">
+                      <p className="text-xs font-semibold text-white truncate group-hover:text-orange-300">
                         {p.full_name.split(' ')[0]}
                       </p>
                       <p className="text-[9px] text-slate-400 truncate">{p.role.split(' ')[0]}</p>
@@ -150,7 +151,7 @@ export default function LoginPage() {
             <div className="pt-6 mt-6 border-t border-white/10 text-center">
               <p className="text-xs text-slate-400">
                 Don't have an account yet?{' '}
-                <Link href="/auth/signup" className="text-cyan-400 hover:underline font-semibold">
+                <Link href="/auth/signup" className="text-orange-400 hover:underline font-semibold">
                   Sign up here
                 </Link>
               </p>

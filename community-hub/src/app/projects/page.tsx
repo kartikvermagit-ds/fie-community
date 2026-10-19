@@ -30,7 +30,7 @@ import { GithubIcon } from '@/components/ui/icons';
 
 const COLUMNS: { id: TaskStatus; label: string; color: string }[] = [
   { id: 'backlog', label: 'Backlog', color: 'text-slate-400' },
-  { id: 'todo', label: 'To Do', color: 'text-cyan-400' },
+  { id: 'todo', label: 'To Do', color: 'text-orange-400' },
   { id: 'in_progress', label: 'In Progress', color: 'text-purple-400' },
   { id: 'review', label: 'Review', color: 'text-amber-400' },
   { id: 'done', label: 'Done', color: 'text-emerald-400' },
@@ -122,7 +122,7 @@ export default function ProjectsPage() {
   const progressPercent = totalTasks > 0 ? Math.round((completedCount / totalTasks) * 100) : 0;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -132,7 +132,7 @@ export default function ProjectsPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-orange-500/15 text-orange-300 border border-orange-500/30">
                   {team?.name || 'Squad'} Project
                 </span>
                 <span className="text-[11px] font-mono text-emerald-400">
@@ -155,14 +155,14 @@ export default function ProjectsPage() {
                   rel="noreferrer"
                   className="px-4 py-2 rounded-xl text-xs font-semibold border border-white/10 bg-white/5 hover:bg-white/10 text-white transition-colors flex items-center gap-1.5"
                 >
-                  <GithubIcon className="w-4 h-4 text-cyan-400" />
+                  <GithubIcon className="w-4 h-4 text-orange-400" />
                   GitHub Repository
                 </a>
               )}
 
               <button
                 onClick={() => setShowCreateTaskModal(true)}
-                className="px-5 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,240,255,0.4)] font-heading"
+                className="px-5 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center gap-1.5 shadow-[0_0_15px_rgba(249,115,22,0.4)] font-heading"
               >
                 <PlusCircle className="w-4 h-4" />
                 Add Sprint Task
@@ -175,7 +175,7 @@ export default function ProjectsPage() {
             <div>
               <div className="flex items-center justify-between text-xs mb-1.5">
                 <span className="text-slate-400">Sprint Roadmap Completion:</span>
-                <span className="font-mono text-cyan-300 font-bold">
+                <span className="font-mono text-orange-300 font-bold">
                   {progressPercent}% ({completedCount}/{totalTasks} tasks)
                 </span>
               </div>
@@ -208,7 +208,7 @@ export default function ProjectsPage() {
             return (
               <div
                 key={col.id}
-                className="rounded-2xl border border-white/10 bg-[#090E1D] p-3.5 flex flex-col min-w-[240px]"
+                className="rounded-2xl border border-white/10 bg-[#0D131F] p-3.5 flex flex-col min-w-[240px]"
               >
                 {/* Column Header */}
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
@@ -232,7 +232,7 @@ export default function ProjectsPage() {
                     columnTasks.map((task) => (
                       <div
                         key={task.id}
-                        className="p-3.5 rounded-xl border border-white/10 bg-[#0C1222] hover:border-cyan-500/40 transition-all space-y-2.5 group cursor-pointer shadow-lg"
+                        className="p-3.5 rounded-xl border border-white/10 bg-[#0D131F] hover:border-orange-500/40 transition-all space-y-2.5 group cursor-pointer shadow-lg"
                         onClick={() => setSelectedTaskDetail(task)}
                       >
                         {/* Priority Chip & Actions */}
@@ -244,7 +244,7 @@ export default function ProjectsPage() {
                                 : task.priority === 'high'
                                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
                                 : task.priority === 'medium'
-                                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
+                                ? 'bg-orange-500/20 text-orange-300 border border-orange-500/30'
                                 : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'
                             }`}
                           >
@@ -269,7 +269,7 @@ export default function ProjectsPage() {
                         </div>
 
                         {/* Title & Desc */}
-                        <h4 className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                        <h4 className="text-xs font-semibold text-white group-hover:text-orange-300 transition-colors line-clamp-2">
                           {task.title}
                         </h4>
 
@@ -285,7 +285,7 @@ export default function ProjectsPage() {
                         {/* Card bottom: Checklist count & Assignee */}
                         <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-400">
                           <div className="flex items-center gap-1">
-                            <CheckSquare className="w-3 h-3 text-cyan-400" />
+                            <CheckSquare className="w-3 h-3 text-orange-400" />
                             <span>
                               {task.checklist.filter((c) => c.completed).length}/{task.checklist.length}
                             </span>
@@ -315,7 +315,7 @@ export default function ProjectsPage() {
         {/* TASK DETAIL & CHECKLIST MODAL */}
         {selectedTaskDetail && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-lg bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+            <div className="w-full max-w-lg bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
               <button
                 onClick={() => setSelectedTaskDetail(null)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -324,7 +324,7 @@ export default function ProjectsPage() {
               </button>
 
               <div className="mb-4">
-                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300">
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-orange-500/10 text-orange-300">
                   {selectedTaskDetail.priority} Priority · {selectedTaskDetail.status.toUpperCase()}
                 </span>
                 <h3 className="font-heading text-xl font-bold text-white mt-2">
@@ -404,7 +404,7 @@ export default function ProjectsPage() {
         {/* CREATE TASK MODAL */}
         {showCreateTaskModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="w-full max-w-lg bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+            <div className="w-full max-w-lg bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative">
               <button
                 onClick={() => setShowCreateTaskModal(false)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -426,7 +426,7 @@ export default function ProjectsPage() {
                     onChange={(e) => setTaskTitle(e.target.value)}
                     placeholder="e.g. Implement WebRTC NAT traversal fallback"
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -437,7 +437,7 @@ export default function ProjectsPage() {
                     value={taskDesc}
                     onChange={(e) => setTaskDesc(e.target.value)}
                     placeholder="Provide context and links..."
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -447,7 +447,7 @@ export default function ProjectsPage() {
                     <select
                       value={taskPriority}
                       onChange={(e) => setTaskPriority(e.target.value as TaskPriority)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       <option value="urgent">🔴 Urgent</option>
                       <option value="high">🟠 High</option>
@@ -461,7 +461,7 @@ export default function ProjectsPage() {
                     <select
                       value={taskStatus}
                       onChange={(e) => setTaskStatus(e.target.value as TaskStatus)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       <option value="backlog">Backlog</option>
                       <option value="todo">To Do</option>
@@ -478,7 +478,7 @@ export default function ProjectsPage() {
                     <select
                       value={taskAssigneeId}
                       onChange={(e) => setTaskAssigneeId(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       {team?.members.map((m) => (
                         <option key={m.user.id} value={m.user.id}>
@@ -494,7 +494,7 @@ export default function ProjectsPage() {
                       type="date"
                       value={taskDueDate}
                       onChange={(e) => setTaskDueDate(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -506,7 +506,7 @@ export default function ProjectsPage() {
                     value={taskLabelsInput}
                     onChange={(e) => setTaskLabelsInput(e.target.value)}
                     placeholder="Networking, Rust, WebRTC"
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 

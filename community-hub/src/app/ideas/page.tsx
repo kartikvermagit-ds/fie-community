@@ -100,7 +100,7 @@ function IdeasContent() {
       excerpt: excerpt || title,
       content,
       category,
-      tags: tags.length ? tags : ['BuildSpace', 'Innovation'],
+      tags: tags.length ? tags : ['FIECommunity', 'Innovation'],
       required_skills: skills.length ? skills : ['Full-Stack', 'React'],
       desired_team_size: Number(desiredTeamSize) || 4,
       status: 'open',
@@ -141,7 +141,7 @@ function IdeasContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white selection:bg-cyan-500/25 selection:text-cyan-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-white selection:bg-orange-500/25 selection:text-orange-400 relative">
       <Navbar />
       <ToastContainer />
 
@@ -149,7 +149,7 @@ function IdeasContent() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-1">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono text-orange-400 uppercase tracking-wider mb-1">
               <Lightbulb className="w-3.5 h-3.5" /> Idea Wall & Proposals
             </div>
             <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -162,7 +162,7 @@ function IdeasContent() {
 
           <button
             onClick={() => setShowCreateModal(true)}
-            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(0,240,255,0.4)] shrink-0 self-start md:self-auto"
+            className="px-5 py-2.5 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(249,115,22,0.4)] shrink-0 self-start md:self-auto"
           >
             <PlusCircle className="w-4 h-4" />
             Publish New Idea
@@ -180,7 +180,7 @@ function IdeasContent() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by keywords, tags, or skills (e.g. WASM, Rust, ZK)..."
-                className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                className="w-full pl-9 pr-3 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-500"
               />
             </div>
 
@@ -190,7 +190,7 @@ function IdeasContent() {
                 <button
                   onClick={() => setSortBy('popular')}
                   className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                    sortBy === 'popular' ? 'bg-cyan-500/20 text-cyan-300 font-semibold' : 'text-slate-400 hover:text-white'
+                    sortBy === 'popular' ? 'bg-orange-500/20 text-orange-300 font-semibold' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   🔥 Popular
@@ -198,7 +198,7 @@ function IdeasContent() {
                 <button
                   onClick={() => setSortBy('newest')}
                   className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-                    sortBy === 'newest' ? 'bg-cyan-500/20 text-cyan-300 font-semibold' : 'text-slate-400 hover:text-white'
+                    sortBy === 'newest' ? 'bg-orange-500/20 text-orange-300 font-semibold' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   ⚡ Newest
@@ -208,7 +208,7 @@ function IdeasContent() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value as any)}
-                className="px-3 py-1.5 rounded-xl border border-white/10 bg-[#0C1222] text-xs text-slate-300 focus:outline-none focus:border-cyan-500"
+                className="px-3 py-1.5 rounded-xl border border-white/10 bg-[#0D131F] text-xs text-slate-300 focus:outline-none focus:border-orange-500"
               >
                 <option value="all">Status: All</option>
                 <option value="open">Open For Team</option>
@@ -225,7 +225,7 @@ function IdeasContent() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all ${
                   selectedCategory === cat
-                    ? 'bg-cyan-400 text-black font-bold shadow-[0_0_15px_rgba(0,240,255,0.4)]'
+                    ? 'bg-cyan-400 text-black font-bold shadow-[0_0_15px_rgba(249,115,22,0.4)]'
                     : 'border border-white/10 bg-white/[0.02] text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -249,7 +249,7 @@ function IdeasContent() {
                 setSearchQuery('');
                 setStatusFilter('all');
               }}
-              className="text-xs text-cyan-400 hover:underline font-semibold"
+              className="text-xs text-orange-400 hover:underline font-semibold"
             >
               Reset filters
             </button>
@@ -259,12 +259,12 @@ function IdeasContent() {
             {filteredIdeas.map((idea) => (
               <div
                 key={idea.id}
-                className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-cyan-500/40 relative"
+                className="glass-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group hover:border-orange-500/40 relative"
               >
                 <div>
                   {/* Card Top: Category, Status, Upvote & Bookmark */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-300 border border-orange-500/20">
                       {idea.category}
                     </span>
 
@@ -273,12 +273,12 @@ function IdeasContent() {
                         onClick={() => upvoteIdea(idea.id)}
                         className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono transition-all ${
                           idea.is_upvoted
-                            ? 'bg-cyan-500/20 border border-cyan-400/40 text-cyan-300'
+                            ? 'bg-orange-500/20 border border-orange-400/40 text-orange-300'
                             : 'border border-white/10 text-slate-400 hover:text-white hover:bg-white/5'
                         }`}
                         title="Upvote idea"
                       >
-                        <Flame className="w-3.5 h-3.5 text-cyan-400" />
+                        <Flame className="w-3.5 h-3.5 text-orange-400" />
                         <span>{idea.upvotes_count}</span>
                       </button>
 
@@ -299,7 +299,7 @@ function IdeasContent() {
                   {/* Title & Excerpt */}
                   <h3
                     onClick={() => setActiveIdeaDetail(idea)}
-                    className="font-heading text-xl font-bold text-white group-hover:text-cyan-300 transition-colors cursor-pointer"
+                    className="font-heading text-xl font-bold text-white group-hover:text-orange-300 transition-colors cursor-pointer"
                   >
                     {idea.title}
                   </h3>
@@ -364,7 +364,7 @@ function IdeasContent() {
 
                     <button
                       onClick={() => handleCreateTeamFromIdea(idea)}
-                      className="px-3 py-1.5 rounded-xl font-heading font-semibold text-xs bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition-all flex items-center gap-1"
+                      className="px-3 py-1.5 rounded-xl font-heading font-semibold text-xs bg-orange-500/15 text-orange-300 border border-orange-500/30 hover:bg-orange-500/25 transition-all flex items-center gap-1"
                     >
                       <Users className="w-3 h-3" />
                       Form Squad
@@ -379,7 +379,7 @@ function IdeasContent() {
         {/* CREATE IDEA MODAL */}
         {showCreateModal && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-2xl bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+            <div className="w-full max-w-2xl bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
               <button
                 onClick={() => setShowCreateModal(false)}
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
@@ -388,7 +388,7 @@ function IdeasContent() {
               </button>
 
               <div className="mb-6">
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">Idea Wall</span>
+                <span className="text-xs font-mono text-orange-400 uppercase tracking-wider">Idea Wall</span>
                 <h2 className="font-heading text-2xl font-bold text-white mt-0.5">Publish New Project Proposal</h2>
                 <p className="text-xs text-slate-400 mt-1">
                   Share your technical vision, architecture, and recruit members for your dream squad.
@@ -404,7 +404,7 @@ function IdeasContent() {
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. NeuroPulse: Edge-Native Decentralized AI Swarm"
                     required
-                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -414,7 +414,7 @@ function IdeasContent() {
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value as IdeaCategory)}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-[#0A1020] text-white focus:outline-none focus:border-orange-400"
                     >
                       {CATEGORIES.filter((c) => c !== 'All').map((c) => (
                         <option key={c} value={c}>
@@ -432,7 +432,7 @@ function IdeasContent() {
                       max={8}
                       value={desiredTeamSize}
                       onChange={(e) => setDesiredTeamSize(Number(e.target.value))}
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -445,7 +445,7 @@ function IdeasContent() {
                     onChange={(e) => setExcerpt(e.target.value)}
                     placeholder="One-line summary for the Idea Wall card preview..."
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -457,7 +457,7 @@ function IdeasContent() {
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Describe the problem, proposed architecture, target hackathon, and roadmap..."
                     required
-                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-white font-mono focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-white font-mono focus:outline-none focus:border-orange-400"
                   />
                 </div>
 
@@ -469,7 +469,7 @@ function IdeasContent() {
                       value={skillsInput}
                       onChange={(e) => setSkillsInput(e.target.value)}
                       placeholder="e.g. Rust, WebAssembly, Next.js, Figma"
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
 
@@ -480,7 +480,7 @@ function IdeasContent() {
                       value={tagsInput}
                       onChange={(e) => setTagsInput(e.target.value)}
                       placeholder="e.g. EdgeAI, WebRTC, PeerToPeer"
-                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-cyan-400"
+                      className="w-full px-3 py-2 rounded-xl border border-white/10 bg-black/40 text-white focus:outline-none focus:border-orange-400"
                     />
                   </div>
                 </div>
@@ -495,7 +495,7 @@ function IdeasContent() {
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl font-heading font-semibold text-xs bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                    className="px-6 py-2.5 rounded-xl font-heading font-semibold text-xs bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)]"
                   >
                     Publish to Campus Wall
                   </button>
@@ -508,7 +508,7 @@ function IdeasContent() {
         {/* IDEA DETAIL & DISCUSSION MODAL */}
         {activeIdeaDetail && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-3xl bg-[#0C1222] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
+            <div className="w-full max-w-3xl bg-[#0D131F] border border-orange-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
               {/* Close Button */}
               <button
                 onClick={() => setActiveIdeaDetail(null)}
@@ -521,7 +521,7 @@ function IdeasContent() {
               <div className="overflow-y-auto pr-1 space-y-6">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                    <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-orange-500/10 text-orange-300 border border-orange-500/20">
                       {activeIdeaDetail.category}
                     </span>
                     <span className="text-[11px] font-mono text-emerald-400">
@@ -567,7 +567,7 @@ function IdeasContent() {
                           className="p-3 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-between text-xs"
                         >
                           <div className="flex items-center gap-2">
-                            <Paperclip className="w-4 h-4 text-cyan-400" />
+                            <Paperclip className="w-4 h-4 text-orange-400" />
                             <span className="text-white font-medium truncate">{att.name}</span>
                           </div>
                           <span className="text-[10px] text-slate-400 font-mono">{att.size}</span>
@@ -578,7 +578,7 @@ function IdeasContent() {
                 )}
 
                 {/* Action CTA Bar */}
-                <div className="p-4 rounded-2xl border border-cyan-500/20 bg-cyan-500/[0.06] flex flex-wrap items-center justify-between gap-3">
+                <div className="p-4 rounded-2xl border border-orange-500/20 bg-orange-500/[0.06] flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <p className="text-xs font-semibold text-white">Inspired by this proposal?</p>
                     <p className="text-[11px] text-slate-300">
@@ -589,7 +589,7 @@ function IdeasContent() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => handleCollaborateInterest(activeIdeaDetail)}
-                      className="px-4 py-2 rounded-xl text-xs font-semibold border border-cyan-400/40 bg-cyan-400/10 text-cyan-300 hover:bg-cyan-400/20 transition-colors"
+                      className="px-4 py-2 rounded-xl text-xs font-semibold border border-orange-400/40 bg-cyan-400/10 text-orange-300 hover:bg-cyan-400/20 transition-colors"
                     >
                       Interested in Collaborating
                     </button>
@@ -598,7 +598,7 @@ function IdeasContent() {
                         setActiveIdeaDetail(null);
                         handleCreateTeamFromIdea(activeIdeaDetail);
                       }}
-                      className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-400 text-black hover:bg-cyan-300 font-heading transition-colors"
+                      className="px-4 py-2 rounded-xl text-xs font-semibold bg-orange-500 text-white hover:bg-orange-600 font-heading transition-colors"
                     >
                       Create Squad from Idea
                     </button>
@@ -608,7 +608,7 @@ function IdeasContent() {
                 {/* Comments Section */}
                 <div className="border-t border-white/10 pt-5 space-y-4">
                   <h4 className="font-heading text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                    <MessageSquare className="w-4 h-4 text-cyan-400" />
+                    <MessageSquare className="w-4 h-4 text-orange-400" />
                     Discussion & Reviews ({activeIdeaDetail.comments_count})
                   </h4>
 
@@ -619,11 +619,11 @@ function IdeasContent() {
                       value={newCommentText}
                       onChange={(e) => setNewCommentText(e.target.value)}
                       placeholder="Add technical thoughts, questions, or invite to chat..."
-                      className="flex-1 px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                      className="flex-1 px-4 py-2 rounded-xl border border-white/10 bg-black/40 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-orange-400"
                     />
                     <button
                       type="submit"
-                      className="px-4 py-2 rounded-xl bg-cyan-400 text-black hover:bg-cyan-300 text-xs font-semibold flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-orange-500 text-white hover:bg-orange-600 text-xs font-semibold flex items-center gap-1.5"
                     >
                       <Send className="w-3.5 h-3.5" />
                       Post
@@ -666,7 +666,7 @@ function IdeasContent() {
 
 export default function IdeasPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#070B14]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#080B10]" />}>
       <IdeasContent />
     </Suspense>
   );

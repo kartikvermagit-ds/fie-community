@@ -18,37 +18,59 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#070B14",
+  themeColor: "#080B10",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "BuildSpace — Great Ideas Deserve Great Teams",
-  description: "The digital campus for developers, students, and creators. Share ideas, discover hackathons, form squads, collaborate in real-time rooms, manage tasks, and build the future together.",
+  metadataBase: new URL('https://fiecommunity.dev'),
+  title: "FIE COMMUNITY — Connect. Collaborate. Create.",
+  description: "Join FIE Community: Where Ideas Find Their Team. Developers, students, innovators, and creators share ideas, discover hackathons, form squads, and build extraordinary projects together.",
   keywords: [
+    "FIE COMMUNITY",
     "developer community",
     "hackathons",
     "project management",
     "realtime collaboration",
     "Kanban board",
     "presentation library",
-    "tech campus",
     "team matchmaking",
-    "student builders"
+    "student builders",
+    "since 2026"
   ],
-  authors: [{ name: "BuildSpace Team" }],
+  authors: [{ name: "FIE Community Team" }],
+  icons: {
+    icon: [
+      { url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/favicon-48.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [
+      { url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/brand/favicon-32.png",
+  },
+  manifest: "/manifest.json",
   openGraph: {
-    title: "BuildSpace — Great Ideas Deserve Great Teams",
-    description: "The digital campus for developers, students, and creators. Share ideas, discover hackathons, form squads, and collaborate in real-time rooms.",
+    title: "FIE COMMUNITY — Great Ideas. Stronger Teams. Endless Possibilities.",
+    description: "The official collaboration platform where developers, students, innovators, and creators share ideas, find teammates, and build something extraordinary together.",
     type: "website",
-    siteName: "BuildSpace",
+    siteName: "FIE COMMUNITY",
+    images: [
+      {
+        url: "/brand/fie-logo.png",
+        width: 600,
+        height: 480,
+        alt: "FIE COMMUNITY — Since 2026",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BuildSpace — Great Ideas Deserve Great Teams",
-    description: "Digital campus for developer collaboration, hackathons, and real-time team building.",
+    title: "FIE COMMUNITY — Great Ideas. Stronger Teams. Endless Possibilities.",
+    description: "Connect. Collaborate. Create. — Where Ideas Find Their Team.",
+    images: ["/brand/fie-logo.png"],
   },
 };
 
@@ -62,7 +84,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#070B14] text-[#F8FAFC] selection:bg-[#00F0FF]/25 selection:text-[#00F0FF]">
+      <body className="min-h-full flex flex-col bg-[#080B10] text-[#F8FAFC] selection:bg-orange-500/25 selection:text-orange-400">
         <AuthProvider>
           <CommunityProvider>
             {children}

@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ToastContainer } from '@/components/ui/toast-container';
-import { Terminal, Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { BrandLogo } from '@/components/ui/brand-logo';
+import { Mail, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function RecoveryPage() {
   const [email, setEmail] = useState('');
@@ -19,31 +20,31 @@ export default function RecoveryPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070B14] text-white relative">
+    <div className="min-h-screen flex flex-col bg-[#080B10] text-[#F8FAFC] relative">
       <Navbar />
       <ToastContainer />
 
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative z-10">
         <div className="w-full max-w-md">
-          <div className="rounded-3xl border border-white/10 bg-[#0C1222]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
+          <div className="rounded-3xl border border-white/10 bg-[#0D131F]/90 backdrop-blur-2xl p-6 sm:p-8 shadow-2xl">
             <div className="text-center mb-6">
-              <div className="h-10 w-10 mx-auto rounded-xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center mb-3">
-                <Terminal className="w-5 h-5 text-cyan-400" />
+              <div className="flex justify-center mb-4">
+                <BrandLogo variant="symbol" size="lg" withGlow={true} />
               </div>
               <h1 className="font-heading text-2xl font-bold text-white tracking-tight">
                 Reset Password
               </h1>
               <p className="text-xs text-slate-400 mt-1">
-                Enter your email address and we will send you secure recovery instructions.
+                Enter your FIE Community account email to receive secure recovery instructions.
               </p>
             </div>
 
             {submitted ? (
               <div className="text-center py-6 space-y-3">
-                <CheckCircle2 className="w-12 h-12 text-cyan-400 mx-auto" />
+                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
                 <h3 className="font-heading text-lg font-bold text-white">Check your inbox</h3>
                 <p className="text-xs text-slate-300">
-                  We sent a password reset link to <span className="text-cyan-300 font-semibold">{email}</span>.
+                  We sent a password reset link to <span className="text-orange-300 font-semibold">{email}</span>.
                 </p>
                 <div className="pt-4">
                   <Link
@@ -64,16 +65,16 @@ export default function RecoveryPage() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="alex.chen@buildspace.dev"
+                      placeholder="alex.chen@fiecommunity.dev"
                       required
-                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                      className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-white/10 bg-black/40 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500 transition-colors"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-cyan-400 text-black hover:bg-cyan-300 shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl font-heading font-semibold text-sm bg-orange-500 text-white hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all flex items-center justify-center gap-2"
                 >
                   Send Reset Link
                   <ArrowRight className="w-4 h-4" />
