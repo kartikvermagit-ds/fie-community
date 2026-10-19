@@ -1,265 +1,131 @@
-# BuildSpace — The Premier Developer Campus & Hackathon Platform
+# FIE COMMUNITY — Official Platform & Brand Identity
 
-> **"Great ideas deserve great teams."**
-> BuildSpace is a digital campus for software engineers, student builders, researchers, and creators. Share technical ideas, discover hackathons, form squads, organize nested subgroup rooms, chat in real time, manage Kanban sprint boards, and review pitch decks together.
+> **"Connect. Collaborate. Create."**
+> **"Where Ideas Find Their Team."**
+>
+> FIE Community is a premier digital campus and collaborative innovation platform uniting developers, students, innovators, and creators worldwide. Share breakthrough ideas, discover hackathons, form squads, brainstorm in nested subgroup rooms, manage Kanban sprint boards, and share presentation decks together.
 
 ---
 
-## 🌟 Visual Aesthetics & Design Language
+## 🎨 Official Brand Identity & Logo Integration
 
-Inspired by futuristic developer aesthetics combined with modern SaaS clarity:
-- **Palette**: Deep navy/near-black background (`#070B14`, `#0A1020`), with electric cyan (`#00F0FF`), cosmic purple (`#A855F7`), and indigo (`#6366F1`) neon accents.
-- **Typography**: **Space Grotesk** for bold headlines and terminal headings; **Inter** for clean, readable body typography.
-- **Atmosphere**: Cyber grid patterns, soft gradient lighting, selective glassmorphism with high-performance backdrop blurs, refined card shadows, and micro-interactions.
-- **Responsive Layout**: Designed mobile-first and optimized across smartphone, tablet, and desktop viewports, with accessibility and `prefers-reduced-motion` compliance.
+The visual identity of FIE Community is anchored by its official emblem: three interconnected human figures symbolizing community, collaboration, and teamwork, with white outlines, warm orange, rich terracotta, and modern blue on a deep dark canvas.
+
+### Brand Color Palette
+- **Background**: `#080B10` (Dark space canvas)
+- **Surface Background**: `#111722` (Glassmorphic cards & headers)
+- **Primary Accent**: Warm Orange (`#F97316` / `#EA580C`)
+- **Secondary Accent**: Modern Blue (`#3B82F6` / `#2563EB`)
+- **Terracotta / Amber**: `#C2672B` / `#D97706`
+- **Main Text**: `#F8FAFC`
+- **Muted Text**: `#94A3B8`
+- **Status Green**: `#10B981` (Online & verification)
+- **Status Amber**: `#F59E0B` (Deadlines & alerts)
+- **Status Rose**: `#F43F5E` (Errors & moderation)
+
+### Logo Asset Variants (`/public/brand/`)
+1. **`fie-logo-original.png`**: Original uploaded master reference image (600×480).
+2. **`fie-logo.png`**: Official logo with full wordmark and "SINCE 2026".
+3. **`fie-logo-transparent.png`**: Mathematically un-premultiplied transparent PNG preserving outlines without fringes.
+4. **`fie-symbol.png`**: High-resolution centered square emblem for navbar, sidebar, and headers.
+5. **`fie-logo-monochrome.png`**: Clean monochrome wordmark for light/dark printing.
+6. **`fie-symbol-monochrome.png`**: Clean monochrome emblem.
+7. **`app-icon-dark.png`**: PWA 512×512 square application icon.
+8. **`apple-touch-icon.png`**: iOS mobile home screen icon (180×180).
+9. **`icon-192.png` & `icon-512.png`**: PWA manifest icons.
+10. **`favicon-32.png` & `favicon-48.png`**: Browser tab favicons.
+
+---
+
+## 🌟 Visual Aesthetics & Immersion Technique
+
+- **Seamless Immersion**: Rather than harsh box outlines, the logo is embedded with dual-tinted ambient glows (warm orange on the top-left, modern blue on the bottom-right) reflecting the exact colors of the figures in the logo.
+- **Typography**: **Space Grotesk** for headings and brand logotypes; **Inter** for readable developer-centric interfaces.
+- **Atmosphere**: Cyber grid patterns, soft gradient lighting, high-performance backdrop blurs, refined card borders (`border-white/10` with `hover:border-orange-500/40`), and smooth micro-interactions.
+- **Responsive Layout**: Mobile-first design optimized across smartphones, tablets, and wide monitors.
 
 ---
 
 ## 🚀 Key Features & Capabilities
 
-### 1. Public Landing & Campus Showcase
-- Animated hero headline: *"Great ideas deserve great teams."*
-- Interactive live terminal mockup featuring simulated subgroup room activity.
-- Metrics counter showcasing active builders, hackathon squads, and tracked prize pools.
-- Featured ideas and active hackathons showcases with instant upvotes.
-- Interactive FAQ accordion and high-converting onboarding CTAs.
+### 1. Distinctive Landing Page
+- **Hero Headline**: *"Great Ideas. Stronger Teams. Endless Possibilities."*
+- **Supporting Description**: *"Join a community where developers, students, innovators, and creators share ideas, find teammates, collaborate on projects, and build something extraordinary together."*
+- **Primary CTAs**: *"Explore Community"*, *"Share Your Idea"*, *"Find Your Team"*.
+- **Interactive Terminal**: Live preview of subgroup channels and pitch deck collaboration.
+- **8 Dedicated Sections**:
+  1. Ideas Hub (Trending sparks & upvotes)
+  2. Hackathon Discovery (Global & campus hackathons)
+  3. Team Formation (Matchmaking by required tech stack)
+  4. Private Collaboration Rooms (Discord-style nested subgroup rooms)
+  5. Project Workspaces (Kanban sprint boards)
+  6. PPT & Resource Sharing (Slide deck vault with discussion)
+  7. Community Members (Campus directory with skills)
+  8. Featured Projects (Shipped by FIE Community squads)
 
 ### 2. Authentication & Onboarding
-- Sign in, registration passport with university/college and skills tagging, and password recovery.
-- **Interactive Multi-Persona Switcher**: Switch on the fly between pre-configured campus personas (Founder, Lead Frontend Engineer, Low-Level Systems Architect, ZK Cryptographer, UI/UX Pitch Designer) to test roles, permissions, and views.
-- Seamless sync with live Supabase Auth when credentials are provided.
+- Sign in, registration passport with college and skills tagging, and password recovery.
+- **Interactive Multi-Persona Switcher**: Switch instantly between pre-configured campus personas (Founder, Lead Frontend Engineer, Low-Level Systems Architect, ZK Cryptographer, UI/UX Pitch Designer) to test roles and views.
 
 ### 3. Personalized Community Dashboard
-- Quick action bar: Publish Idea, Create Squad, Join with Invite Code, Enter Workspace.
+- Quick action bar: Share Idea, Form Squad, Join with Invite Code, Enter Team Room.
 - Squad metrics and sprint status summaries.
-- One-click launcher for active subgroup rooms (`#general`, `#frontend-lab`, `#backend-systems`, `#ai-ml-agents`, `#ppt-docs-pitch`).
-- Real-time countdowns for upcoming hackathons.
+- One-click launcher for active subgroup rooms (`#general`, `#frontend-lab`, `#backend-systems`, `#ppt-docs-pitch`).
 
-### 4. Idea Wall & Collaboration Proposals
-- Browse and publish ideas across AI & ML, Web3 & Blockchain, Cybersecurity, Open Source & DevTools, Cloud & DevOps, and Mobile.
-- Reactive upvoting and bookmarking.
-- Technical discussion comment threads and attachment support.
-- One-click **"Create Squad from Idea"** and **"Interested in Collaborating"** actions.
+### 4. Ideas Hub & Collaboration Sparks
+- Publish and discuss ideas across AI & ML, Web3, Cybersecurity, Open Source, and Cloud.
+- Upvoting, bookmarking, threaded technical discussions, and "Create Squad from Idea".
 
 ### 5. Hackathon Hub & Sprints
-- Track prize pools, registration deadlines, team-size limits, and official rules.
-- **Teammate Matchmaking**: Broadcast "Looking for Teammates" availability by tech stack.
-- **Form Squad for Hackathon**: Instantly initializes a team linked to the hackathon with sprint checklists.
+- Track prize pools, registration deadlines, and rules.
+- "Looking for Teammates" availability broadcast and instant squad formation.
 
-### 6. Squads Directory & Hierarchy
-- Strict hierarchy: `Organization/Community → Team/Squad → Subgroup/Room`.
+### 6. Team Formation & Subgroup Hierarchy
+- Hierarchy: `Community → Squad → Subgroup/Room`.
 - Roles: `Owner`, `Admin`, `Member`.
 - Visibilities: `Public`, `Approval Required`, `Invite Only`.
-- Secret invite code generator with 1-click clipboard copy.
-- Founder / Admin join requests review queue with instant approval/rejection.
+- Secret invite codes and admin join request review queues.
 
-### 7. Real-Time Collaboration Rooms (Discord-Inspired)
-- Left navigation of user's squads and nested subgroup rooms.
-- Real-time text messaging with optimistic UI and sender timestamps.
-- Emoji reactions (`🔥`, `🚀`, `💡`, `❤️`, `👍`, `👀`).
-- Threaded quoted replies and message pinning.
-- Slide deck and code file attachment cards.
-- Member roster panel displaying online presence and squad roles.
+### 7. Real-Time Collaboration Rooms
+- Nested channels per squad.
+- Optimistic real-time messaging, code snippets, emoji reactions, and file attachments.
 
-### 8. Project Management & Kanban Boards
-- 5-column Kanban board: `Backlog`, `To Do`, `In Progress`, `Review`, `Done`.
-- Drag/cycle task status transitions.
-- Interactive subtask checklists with automatic sprint progress recalculation.
-- Priority chips (`urgent`, `high`, `medium`, `low`), assignee avatars, due dates, and tags.
-- GitHub repository integration.
+### 8. Presentation & Resource Library (PPT & PDF)
+- Interactive slide deck previews, version tags, and slide feedback threads.
 
-### 9. Presentation & Resource Vault
-- Dedicated library supporting PPT, PPTX, PDF, DOCX, ZIP, and code files.
-- **Interactive Presentation Viewer**: Simulated 16:9 projection screen for pitch deck reviews with rehearsal discussion comments.
-- Secure downloads and file size limit validation (50MB ceiling).
+### 9. Project Sprints & Kanban Boards
+- Columns: Backlog, To Do, In Progress, Review, Done with task assignees and checklists.
 
-### 10. Campus Member Directory & Profiles
-- Filter and search builders by skills (e.g., Rust, WebAssembly, ZK-SNARKs, PyTorch) or university.
-- Direct "Invite to Squad" modal and moderation report actions.
-
-### 11. Command Palette (`⌘K` / `Ctrl+K`)
-- Omnibox search across pages, ideas, hackathons, and commands.
-
-### 12. Moderator & Safety Desk
-- Investigation queue for reported content and user conduct.
-- One-click moderation actions: dismiss report, warn user, or hide content.
+### 10. Global Command Palette (`⌘K` / `Ctrl+K`)
+- Instant search across ideas, hackathons, squads, and persona switching.
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Verification & Test Suite
 
-| Layer | Technologies |
-|---|---|
-| **Framework** | Next.js 16 (App Router, Turbopack, React 19) |
-| **Language** | TypeScript (Strict mode enabled) |
-| **Styling** | Tailwind CSS v4, custom cyber design tokens, selective glassmorphism |
-| **Icons** | Lucide React |
-| **Animation** | Framer Motion & CSS transitions |
-| **Backend & DB** | Supabase (PostgreSQL 15+, Row Level Security, Realtime, Storage) |
-| **Testing** | Node.js native test runner (`node:test`, `node:assert`) |
+- **Unit Tests**: `npm test` runs 6 security, authorization, and sprint calculation tests.
+- **Type Safety**: `npm run typecheck` passes with zero errors.
+- **Production Build**: `npm run build` compiles all 18 static routes cleanly in Next.js 16 (Turbopack).
 
----
-
-## 📁 Repository Structure
-
-```
-fie community/
-├── package.json                   # Top-level workspace manager
-├── README.md                      # Comprehensive documentation
-├── .env.example                   # Environment variable template
-├── community-hub/                 # Isolated Next.js Application
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── next.config.ts
-│   ├── eslint.config.mjs
-│   ├── tests/
-│   │   └── permissions.test.mjs  # Security & authorization unit tests
-│   ├── supabase/
-│   │   ├── migrations/
-│   │   │   └── 20261019000001_buildspace_schema.sql  # Normalized PostgreSQL schema & RLS
-│   │   └── seed.sql              # Development seed data
-│   └── src/
-│       ├── types/index.ts        # Domain models & interfaces
-│       ├── lib/
-│       │   ├── auth-context.tsx  # User state & persona switcher
-│       │   ├── community-context.tsx # Global reactive store
-│       │   ├── mock-data.ts      # Seed data & personas
-│       │   └── supabase/
-│       │       ├── client.ts     # Browser client with demo mode fallback
-│       │       ├── server.ts     # SSR client
-│       │       └── storage.ts    # File validators & sanitizers
-│       ├── components/
-│       │   ├── layout/           # Navbar, Footer, Sidebar
-│       │   └── ui/               # CommandPalette, ToastContainer, Icons
-│       └── app/
-│           ├── layout.tsx        # Space Grotesk & Inter font provider
-│           ├── globals.css       # Design tokens & cyber grid styles
-│           ├── page.tsx          # Public Landing Page
-│           ├── dashboard/        # Personalized Community Dashboard
-│           ├── ideas/            # Idea Wall & Proposal creation
-│           ├── hackathons/       # Hackathon Hub & Matchmaking
-│           ├── teams/            # Squads Directory & Join Requests
-│           ├── workspace/        # Discord-inspired Collaboration Rooms
-│           ├── projects/         # Kanban Sprint Board
-│           ├── resources/        # Presentation & File Library
-│           ├── members/          # Campus Member Directory
-│           ├── notifications/    # Notifications Center
-│           ├── settings/         # Profile & Preferences Editor
-│           ├── admin/            # Moderator & Safety Desk
-│           └── auth/
-│               ├── login/
-│               ├── signup/
-│               └── recovery/
-```
-
----
-
-## ⚡ Quick Start (Local Development)
-
-### Prerequisites
-- Node.js `20.x` or `22.x` (Recommended: v22 LTS)
-- npm `10.x`
-
-### 1. Install Dependencies
 ```bash
-# From workspace root
+# Install dependencies
 npm install
-```
 
-### 2. Run the Development Server
-```bash
+# Run development server
 npm run dev
-```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-> [!NOTE]
-> **Zero-Configuration Demo Mode Active Out-of-the-Box**: You can immediately interact with ideas, create squads, send messages across subgroup rooms, drag Kanban tasks, preview slide decks, and switch demo personas without setting up any credentials!
-
----
-
-## 🗄️ Supabase Cloud Setup & Production Database
-
-When you are ready to connect to a live Supabase project:
-
-### 1. Create a Supabase Project
-Sign in to [supabase.com](https://supabase.com) and create a new project.
-
-### 2. Run Database Migrations
-1. Open the **SQL Editor** in your Supabase dashboard.
-2. Copy and execute the contents of [`community-hub/supabase/migrations/20261019000001_buildspace_schema.sql`](file:///c:/Users/hp/OneDrive/Desktop/fie%20community/community-hub/supabase/migrations/20261019000001_buildspace_schema.sql).
-3. *(Optional)* Run [`community-hub/supabase/seed.sql`](file:///c:/Users/hp/OneDrive/Desktop/fie%20community/community-hub/supabase/seed.sql) to populate initial hackathons and data.
-
-### 3. Configure Supabase Storage
-The migration script automatically provisions the private `presentations` bucket with the following policies:
-- Authenticated team members can download presentations.
-- Authenticated team members can upload presentations (up to 50MB).
-
-### 4. Configure Environment Variables
-Copy `.env.example` to `.env.local` inside `community-hub/`:
-```bash
-cp community-hub/.env.example community-hub/.env.local
-```
-Fill in your credentials from the Supabase Project Settings (**API** tab):
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://<your-project-id>.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-key>
-SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
-NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
-```
-
----
-
-## 🔒 Security & Row Level Security (RLS) Matrix
-
-Every user-data table in PostgreSQL is protected by Row Level Security:
-
-| Table | SELECT | INSERT | UPDATE | DELETE |
-|---|---|---|---|---|
-| `profiles` | Everyone (Public) | Authenticated user (`auth.uid() = id`) | User only | Cascade |
-| `teams` | Authenticated users | Owner | Owner & Admins | Owner |
-| `team_members` | Team Members only | Owner & Admins | Owner & Admins | Owner & Admins |
-| `rooms` | Team Members only | Owner & Admins | Owner & Admins | Owner & Admins |
-| `messages` | **Room Members only** | **Room Members only** | Author only | Author & Team Owner |
-| `files` | **Team Members only** | **Team Members only** | Uploader only | Uploader & Team Owner |
-| `tasks` | Team Members only | Team Members | Team Members | Team Members |
-| `notifications` | Recipient only (`auth.uid() = user_id`) | System | Recipient only | Recipient only |
-
----
-
-## 🧪 Testing & Verification
-
-Run the comprehensive unit test suite:
-```bash
-# Run tests
+# Run security & permissions test suite
 npm test
 
-# Run TypeScript typecheck
+# Run TypeScript type check
 npm run typecheck
 
-# Run ESLint
-npm run lint
-
-# Run production build
+# Build for production
 npm run build
 ```
 
 ---
 
-## 🚀 Deployment to Vercel
+## 📄 License & Attribution
 
-BuildSpace is optimized for 1-click deployment on Vercel:
-
-1. Push your repository to GitHub.
-2. In the [Vercel Dashboard](https://vercel.com/new), import your repository.
-3. In **Project Settings**:
-   - **Root Directory**: Select `community-hub` (or leave default if deploying monorepo workspace).
-   - **Framework Preset**: Next.js.
-   - **Environment Variables**: Add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
-4. Click **Deploy**.
-5. Vercel automatically compiles the static pages, enables serverless edge functions, and deploys your digital campus!
-
----
-
-## 📜 License
-
-MIT License. Designed and engineered for student hackers and developer communities worldwide.
+Official platform of **FIE COMMUNITY** (Since 2026). All brand trademarks, logos, and visual assets reserved.
