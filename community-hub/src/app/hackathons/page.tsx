@@ -1,36 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { ToastContainer } from '@/components/ui/toast-container';
 import { useAuth } from '@/lib/auth-context';
 import { useCommunity } from '@/lib/community-context';
+import { createHackathonCalendar } from '@/lib/hackathon-calendar';
+import { useHackathonWatchlist } from '@/lib/use-hackathon-watchlist';
 import { Hackathon } from '@/types';
 import {
   Trophy,
   Calendar,
   Users,
-  Clock,
-  Sparkles,
-  ArrowRight,
   ExternalLink,
-  ShieldAlert,
   PlusCircle,
   X,
-  Code2,
-  CheckCircle2,
   MapPin,
-  Flame,
+  Bookmark,
+  BookmarkCheck,
+  CalendarPlus,
 } from 'lucide-react';
+
+const subscribeToDate = () => () => {};
+function HackathonDate({ value }: { value: string }) {
+  const text = useSyncExternalStore(subscribeToDate,
+    () => new Date(value).toLocaleDateString(), () => value.slice(0, 10));
+  return <time dateTime={value}>{text}</time>;
+}
 
 export default function HackathonsPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
   const { hackathons, createHackathon, createTeam, showToast } = useCommunity();
+  const { savedIds, setSaved, isReady, storageAvailable } = useHackathonWatchlist(user?.id || null, !isLoading);
 
-  const [activeTab, setActiveTab] = useState<'all' | 'ongoing' | 'upcoming'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'ongoing' | 'upcoming' | 'saved'>('all');
   const [selectedHackathon, setSelectedHackathon] = useState<Hackathon | null>(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [lookingForTeamModal, setLookingForTeamModal] = useState(false);
@@ -40,16 +46,48 @@ export default function HackathonsPage() {
   const [organizer, setOrganizer] = useState('');
   const [prizePool, setPrizePool] = useState('$50,000 USD');
   const [description, setDescription] = useState('');
-  const [bannerUrl, setBannerUrl] = useState('');
+  const bannerUrl = '';
   const [registrationUrl, setRegistrationUrl] = useState('');
   const [tagsInput, setTagsInput] = useState('Cybersecurity, Systems, AI');
-  const [rules, setRules] = useState('Teams of 2 to 4 members. 72-hour hacking period.');
+  const rules = 'Teams of 2 to 4 members. 72-hour hacking period.';
 
   const filteredHackathons = hackathons.filter((h) => {
+    if (activeTab === 'saved') return savedIds.includes(h.id);
     if (activeTab === 'ongoing') return h.status === 'ongoing';
     if (activeTab === 'upcoming') return h.status === 'upcoming';
     return true;
   });
+  const savedCount = hackathons.filter((hackathon) => savedIds.includes(hackathon.id)).length;
+
+  const handleSaveHackathon = (hackathon: Hackathon) => {
+    if (!user) {
+      showToast({ type: 'info', title: 'Sign in to save hackathons', description: 'Your watchlist is kept separately for your profile in this browser.' });
+      return;
+    }
+    const shouldSave = !savedIds.includes(hackathon.id);
+    if (!setSaved(hackathon.id, shouldSave)) {
+      showToast({ type: 'error', title: 'Could not update your watchlist', description: 'Browser storage is unavailable or full. Allow site storage and try again.' });
+      return;
+    }
+    showToast({ type: 'success', title: shouldSave ? 'Hackathon saved' : 'Hackathon removed', description: shouldSave ? 'Find it under Saved events in this browser.' : 'Removed from your saved events.' });
+  };
+
+  const handleExportCalendar = (hackathon: Hackathon) => {
+    try {
+      const calendar = createHackathonCalendar(hackathon);
+      const url = URL.createObjectURL(new Blob([calendar.content], { type: 'text/calendar;charset=utf-8' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = calendar.filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast({ type: 'success', title: 'Calendar file downloaded', description: 'Import the .ics file into your calendar for registration and event dates. Check the official portal for date changes.' });
+    } catch (error) {
+      showToast({ type: 'error', title: 'Calendar export unavailable', description: error instanceof Error ? error.message : 'The event dates could not be exported.' });
+    }
+  };
 
   const handleCreateHackathon = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,7 +124,7 @@ export default function HackathonsPage() {
 
   const handleCreateTeamForHackathon = (hackathon: Hackathon) => {
     if (!user) return;
-    const newTeam = createTeam({
+    createTeam({
       name: `${hackathon.title.split(' ')[0]} Squad`,
       description: `Official competing squad for ${hackathon.title}`,
       hackathon_id: hackathon.id,
@@ -135,9 +173,10 @@ export default function HackathonsPage() {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-2 border-b border-white/10 pb-3">
+        <div className="flex flex-wrap items-center gap-2 border-b border-white/10 pb-3" aria-label="Filter hackathons">
           <button
             onClick={() => setActiveTab('all')}
+            aria-pressed={activeTab === 'all'}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === 'all'
                 ? 'bg-purple-500/20 text-purple-300 border border-purple-500/40'
@@ -148,6 +187,7 @@ export default function HackathonsPage() {
           </button>
           <button
             onClick={() => setActiveTab('ongoing')}
+            aria-pressed={activeTab === 'ongoing'}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === 'ongoing'
                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
@@ -158,6 +198,7 @@ export default function HackathonsPage() {
           </button>
           <button
             onClick={() => setActiveTab('upcoming')}
+            aria-pressed={activeTab === 'upcoming'}
             className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
               activeTab === 'upcoming'
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
@@ -166,7 +207,32 @@ export default function HackathonsPage() {
           >
             ⏳ Upcoming Sprints
           </button>
+          <button
+            onClick={() => setActiveTab('saved')}
+            aria-pressed={activeTab === 'saved'}
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+              activeTab === 'saved'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            <Bookmark className="w-3.5 h-3.5" /> Saved events ({isReady ? savedCount : '…'})
+          </button>
         </div>
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
+          <p>{!isReady ? 'Loading your saved events…' : user ? `Saved for ${user.full_name} in this browser. Import calendar files to track deadlines.` : 'Sign in to keep a personal watchlist in this browser.'}</p>
+          {!storageAvailable && <p role="status" className="text-amber-300">Browser storage is unavailable. Calendar downloads still work.</p>}
+        </div>
+
+        {filteredHackathons.length === 0 && (
+          <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.02] px-6 py-14 text-center">
+            <Bookmark className="w-8 h-8 mx-auto text-slate-500 mb-3" />
+            <h2 className="font-heading text-xl font-semibold text-white">{activeTab === 'saved' ? (!isReady ? 'Loading saved events' : !user ? 'Sign in to see saved events' : !storageAvailable ? 'Saved events unavailable' : 'No saved events yet') : 'No hackathons in this view'}</h2>
+            <p className="text-sm text-slate-400 mt-2">{activeTab === 'saved' ? (!storageAvailable ? 'Allow site storage to access your watchlist in this browser.' : 'Save an event to keep its rules and calendar dates close at hand.') : 'Check all hackathons for more competitions.'}</p>
+            <button onClick={() => setActiveTab('all')} className="mt-5 rounded-xl px-4 py-2 text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30">Browse all hackathons</button>
+          </div>
+        )}
 
         {/* Hackathons Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -185,6 +251,17 @@ export default function HackathonsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#090E1D] via-black/30 to-transparent" />
 
+                  <button
+                    onClick={() => handleSaveHackathon(h)}
+                    disabled={!isReady}
+                    aria-pressed={savedIds.includes(h.id)}
+                    aria-label={`${savedIds.includes(h.id) ? 'Unsave' : 'Save'} ${h.title}`}
+                    className={`absolute top-3 left-3 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-black/70 backdrop-blur-md border transition-colors disabled:opacity-50 ${savedIds.includes(h.id) ? 'text-amber-300 border-amber-400/40 hover:bg-black/90' : 'text-white border-white/20 hover:border-amber-400/50'}`}
+                  >
+                    {savedIds.includes(h.id) ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
+                    {savedIds.includes(h.id) ? 'Saved' : 'Save'}
+                  </button>
+
                   {/* Badge */}
                   <span className="absolute top-3 right-3 text-[10px] font-mono px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-emerald-300 border border-emerald-500/30 uppercase font-bold">
                     {h.status}
@@ -197,11 +274,8 @@ export default function HackathonsPage() {
 
                 <div className="p-5">
                   <p className="text-[11px] font-mono text-purple-400">{h.organizer}</p>
-                  <h3
-                    onClick={() => setSelectedHackathon(h)}
-                    className="font-heading text-xl font-bold text-white mt-1 group-hover:text-purple-300 transition-colors cursor-pointer"
-                  >
-                    {h.title}
+                  <h3 className="font-heading text-xl font-bold text-white mt-1 group-hover:text-purple-300 transition-colors">
+                    <button onClick={() => setSelectedHackathon(h)} className="text-left">{h.title}</button>
                   </h3>
                   <p className="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
                     {h.description}
@@ -210,7 +284,11 @@ export default function HackathonsPage() {
                   <div className="mt-4 pt-3 border-t border-white/5 space-y-2 text-xs text-slate-400">
                     <div className="flex items-center gap-2">
                       <Calendar className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                      <span>{new Date(h.start_date).toLocaleDateString()} – {new Date(h.end_date).toLocaleDateString()}</span>
+                      <span><HackathonDate value={h.start_date} /> – <HackathonDate value={h.end_date} /></span>
+                    </div>
+                    <div className="flex items-center gap-2 text-amber-300">
+                      <CalendarPlus className="w-3.5 h-3.5 shrink-0" />
+                      <span>Register by <HackathonDate value={h.registration_deadline} /></span>
                     </div>
                     <div className="flex items-center gap-2">
                       <MapPin className="w-3.5 h-3.5 text-purple-400 shrink-0" />
@@ -235,7 +313,12 @@ export default function HackathonsPage() {
                 </div>
               </div>
 
-              <div className="p-5 pt-0 flex items-center justify-between gap-3 border-t border-white/5 mt-4">
+              <div className="px-5 pb-3">
+                <button onClick={() => handleExportCalendar(h)} className="w-full flex items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5">
+                  <CalendarPlus className="w-3.5 h-3.5" /> Add dates to calendar
+                </button>
+              </div>
+              <div className="p-5 pt-3 flex items-center justify-between gap-3 border-t border-white/5">
                 <button
                   onClick={() => setSelectedHackathon(h)}
                   className="text-xs text-slate-400 hover:text-white font-medium"
@@ -258,9 +341,10 @@ export default function HackathonsPage() {
         {/* HACKATHON DETAILS MODAL */}
         {selectedHackathon && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-            <div className="w-full max-w-2xl bg-[#0C1222] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+            <div role="dialog" aria-modal="true" aria-labelledby="hackathon-details-title" className="w-full max-w-2xl bg-[#0C1222] border border-purple-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
               <button
                 onClick={() => setSelectedHackathon(null)}
+                aria-label="Close hackathon details"
                 className="absolute top-5 right-5 text-slate-400 hover:text-white p-1"
               >
                 <X className="w-5 h-5" />
@@ -270,13 +354,28 @@ export default function HackathonsPage() {
                 <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">
                   {selectedHackathon.status.toUpperCase()}
                 </span>
-                <h2 className="font-heading text-2xl font-bold text-white mt-2">
+                <h2 id="hackathon-details-title" className="font-heading text-2xl font-bold text-white mt-2">
                   {selectedHackathon.title}
                 </h2>
                 <p className="text-xs text-slate-400 mt-1">Organized by {selectedHackathon.organizer}</p>
               </div>
 
               <div className="space-y-4 text-xs">
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => handleSaveHackathon(selectedHackathon)}
+                    disabled={!isReady}
+                    aria-pressed={savedIds.includes(selectedHackathon.id)}
+                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 font-semibold hover:bg-amber-500/20 disabled:opacity-50"
+                  >
+                    {savedIds.includes(selectedHackathon.id) ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
+                    {savedIds.includes(selectedHackathon.id) ? 'Saved — remove' : 'Save event'}
+                  </button>
+                  <button onClick={() => handleExportCalendar(selectedHackathon)} className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5">
+                    <CalendarPlus className="w-3.5 h-3.5" /> Download calendar (.ics)
+                  </button>
+                  <p className="basis-full text-[11px] text-slate-400">Includes the registration deadline and competition dates. Your calendar displays times in its own timezone.</p>
+                </div>
                 <div className="p-4 rounded-xl border border-white/10 bg-white/[0.02] space-y-2">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Prize Pool:</span>
@@ -291,7 +390,7 @@ export default function HackathonsPage() {
                   <div className="flex justify-between">
                     <span className="text-slate-400">Registration Closes:</span>
                     <span className="text-amber-400 font-mono">
-                      {new Date(selectedHackathon.registration_deadline).toLocaleDateString()}
+                      <HackathonDate value={selectedHackathon.registration_deadline} />
                     </span>
                   </div>
                 </div>

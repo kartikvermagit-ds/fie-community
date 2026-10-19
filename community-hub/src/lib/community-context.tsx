@@ -15,17 +15,10 @@ import {
   ContentReport,
   TaskStatus,
 } from '@/types';
-import {
-  MOCK_IDEAS,
-  MOCK_HACKATHONS,
-  MOCK_TEAMS,
-  MOCK_MESSAGES,
-  MOCK_PROJECTS,
-  MOCK_FILES,
-  MOCK_NOTIFICATIONS,
-  MOCK_JOIN_REQUESTS,
-} from './mock-data';
+import { MOCK_TEAMS } from './mock-data';
 import { useAuth } from './auth-context';
+import { useDemoCampus } from './use-demo-campus';
+import { getMessagePostError } from './chat-threads';
 
 interface ToastMessage {
   id: string;
@@ -61,7 +54,7 @@ interface CommunityContextType {
 
   // Real-time Chat & Rooms
   messages: Record<string, ChatMessage[]>;
-  sendMessage: (roomId: string, content: string, attachments?: ChatMessage['attachments'], replyTo?: ChatMessage['reply_to']) => void;
+  sendMessage: (roomId: string, content: string, attachments?: ChatMessage['attachments'], replyTo?: ChatMessage['reply_to'], parentId?: string) => void;
   addReaction: (roomId: string, messageId: string, emoji: string) => void;
   pinMessage: (roomId: string, messageId: string) => void;
   deleteMessage: (roomId: string, messageId: string) => void;
@@ -97,21 +90,37 @@ interface CommunityContextType {
 const CommunityContext = createContext<CommunityContextType | undefined>(undefined);
 
 export function CommunityProvider({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
-
-  const [ideas, setIdeas] = useState<Idea[]>(MOCK_IDEAS);
-  const [hackathons, setHackathons] = useState<Hackathon[]>(MOCK_HACKATHONS);
-  const [teams, setTeams] = useState<Team[]>(MOCK_TEAMS);
-  const [currentTeam, setCurrentTeam] = useState<Team | null>(MOCK_TEAMS[0]);
-  const [currentRoom, setCurrentRoom] = useState<SubgroupRoom | null>(MOCK_TEAMS[0].rooms[0]);
-  const [messages, setMessages] = useState<Record<string, ChatMessage[]>>(MOCK_MESSAGES);
-  const [projects, setProjects] = useState<Project[]>(MOCK_PROJECTS);
-  const [files, setFiles] = useState<FileResource[]>(MOCK_FILES);
-  const [notifications, setNotifications] = useState<AppNotification[]>(MOCK_NOTIFICATIONS);
-  const [joinRequests, setJoinRequests] = useState<JoinRequest[]>(MOCK_JOIN_REQUESTS);
-  const [reports, setReports] = useState<ContentReport[]>([]);
+  const { user, isDemoMode } = useAuth();
+  const { campus, updateField, storageFailed } = useDemoCampus(isDemoMode);
+  const { ideas, hackathons, teams, messages, projects, files, notifications, joinRequests, reports } = campus;
+  const setIdeas = (value: React.SetStateAction<Idea[]>) => updateField('ideas', value);
+  const setHackathons = (value: React.SetStateAction<Hackathon[]>) => updateField('hackathons', value);
+  const setTeams = (value: React.SetStateAction<Team[]>) => updateField('teams', value);
+  const setMessages = (value: React.SetStateAction<Record<string, ChatMessage[]>>) => updateField('messages', value);
+  const setProjects = (value: React.SetStateAction<Project[]>) => updateField('projects', value);
+  const setFiles = (value: React.SetStateAction<FileResource[]>) => updateField('files', value);
+  const setNotifications = (value: React.SetStateAction<AppNotification[]>) => updateField('notifications', value);
+  const setJoinRequests = (value: React.SetStateAction<JoinRequest[]>) => updateField('joinRequests', value);
+  const setReports = (value: React.SetStateAction<ContentReport[]>) => updateField('reports', value);
+  const [currentTeamId, setCurrentTeamId] = useState<string | null>(MOCK_TEAMS[0].id);
+  const [currentRoomId, setCurrentRoomId] = useState<string | null>(MOCK_TEAMS[0].rooms[0].id);
+  const memberTeams = teams.filter((team) => team.members.some((member) => member.user.id === user?.id));
+  const currentTeam = memberTeams.find((team) => team.id === currentTeamId) ?? memberTeams[0] ?? null;
+  const currentRoom = currentTeam?.rooms.find((room) => room.id === currentRoomId) ?? currentTeam?.rooms[0] ?? null;
+  const setCurrentTeam = (team: Team | null) => setCurrentTeamId(team?.id ?? null);
+  const setCurrentRoom = (room: SubgroupRoom | null) => setCurrentRoomId(room?.id ?? null);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  useEffect(() => {
+    if (storageFailed) {
+      const id = 'demo-storage-unavailable';
+      setToasts((previous) => previous.some((toast) => toast.id === id) ? previous : [...previous, {
+        id, type: 'warning', title: 'Browser storage is unavailable',
+        description: 'Your demo changes work for this visit but may be lost on refresh. Free browser storage or allow site data to save them.',
+      }]);
+    }
+  }, [storageFailed]);
 
   // Keyboard shortcut listener for Command Palette (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -450,14 +459,20 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   };
 
   // --- Real-time Chat actions ---
-  const sendMessage = (roomId: string, content: string, attachments?: ChatMessage['attachments'], replyTo?: ChatMessage['reply_to']) => {
-    if (!user || (!content.trim() && (!attachments || attachments.length === 0))) return;
-    
+  const sendMessage = (roomId: string, content: string, attachments?: ChatMessage['attachments'], replyTo?: ChatMessage['reply_to'], parentId?: string) => {
+    if (!content.trim() && (!attachments || attachments.length === 0)) return;
+    const postError = getMessagePostError(user?.id, teams, roomId, messages[roomId] || [], parentId);
+    if (postError || !user) {
+      showToast({ type: 'error', title: 'Message could not be sent', description: postError || 'Sign in to post a message.' });
+      return;
+    }
+
     const newMsg: ChatMessage = {
       id: `msg_${Date.now()}_${Math.random().toString(36).substring(7)}`,
       room_id: roomId,
       sender: user,
       content: content.trim(),
+      parent_id: parentId,
       reply_to: replyTo,
       attachments,
       reactions: [],
@@ -530,7 +545,14 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   };
 
   // --- Projects & Kanban actions ---
+  const canEditProject = (projectId: string) => {
+    const project = projects.find((item) => item.id === projectId);
+    return Boolean(user && project && teams.some((team) => team.id === project.team_id
+      && team.members.some((member) => member.user.id === user.id)));
+  };
+
   const updateTaskStatus = (projectId: string, taskId: string, newStatus: TaskStatus) => {
+    if (!canEditProject(projectId)) return;
     setProjects((prev) =>
       prev.map((proj) => {
         if (proj.id === projectId) {
@@ -550,6 +572,7 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   };
 
   const createTask = (projectId: string, taskData: Omit<ProjectTask, 'id' | 'project_id' | 'created_at'>) => {
+    if (!canEditProject(projectId) || !taskData.title.trim()) return;
     const newTask: ProjectTask = {
       ...taskData,
       id: `task_${Date.now()}`,
@@ -577,6 +600,7 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   };
 
   const toggleTaskChecklist = (projectId: string, taskId: string, checklistId: string) => {
+    if (!canEditProject(projectId)) return;
     setProjects((prev) =>
       prev.map((proj) => {
         if (proj.id === projectId) {
@@ -597,11 +621,12 @@ export function CommunityProvider({ children }: { children: React.ReactNode }) {
   };
 
   const createProject = (projectData: Partial<Project>) => {
-    if (!currentTeam) return;
+    const targetTeam = projectData.team_id ? memberTeams.find((team) => team.id === projectData.team_id) : currentTeam;
+    if (!targetTeam) return;
     const newProj: Project = {
       id: `proj_${Date.now()}`,
-      team_id: currentTeam.id,
-      team_name: currentTeam.name,
+      team_id: targetTeam.id,
+      team_name: targetTeam.name,
       title: projectData.title || 'New Hackathon Build',
       slug: (projectData.title || 'build').toLowerCase().replace(/\s+/g, '-'),
       description: projectData.description || 'Sprint project on BuildSpace',
