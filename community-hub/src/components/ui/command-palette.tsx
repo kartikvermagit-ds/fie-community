@@ -21,7 +21,7 @@ import {
 
 export function CommandPalette() {
   const router = useRouter();
-  const { isCommandPaletteOpen, setIsCommandPaletteOpen, ideas, hackathons, teams } = useCommunity();
+  const { isCommandPaletteOpen, setIsCommandPaletteOpen, ideas, hackathons } = useCommunity();
   const { switchDemoUser, availableDemoUsers } = useAuth();
   const [query, setQuery] = useState('');
 
@@ -39,19 +39,16 @@ export function CommandPalette() {
   const navItems = [
     { name: 'Community Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Idea Wall & Collab', path: '/ideas', icon: Lightbulb },
-    { name: 'Hackathons Hub', path: '/hackathons', icon: Trophy },
+    { name: 'Hackathons, Saved Events & Calendar', path: '/hackathons', icon: Trophy },
     { name: 'Teams & Subgroups Directory', path: '/teams', icon: Users },
-    { name: 'Real-time Collaboration Rooms', path: '/workspace', icon: MessagesSquare },
-    { name: 'Project Kanban & Milestones', path: '/projects', icon: FolderGit2 },
+    { name: 'Collaboration Rooms & Message Threads', path: '/workspace', icon: MessagesSquare },
+    { name: 'Project Board, My Tasks & Deadlines', path: '/projects', icon: FolderGit2 },
     { name: 'Presentations & Document Library', path: '/resources', icon: FileText },
     { name: 'Campus Members & Skills Search', path: '/members', icon: UserCheck },
     { name: 'Moderator & Safety Desk', path: '/admin', icon: ShieldAlert },
   ];
 
-  const filteredNav = useMemo(() => {
-    if (!query) return navItems;
-    return navItems.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
-  }, [query]);
+  const filteredNav = navItems.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()));
 
   const filteredIdeas = useMemo(() => {
     if (!query) return ideas.slice(0, 3);
@@ -219,7 +216,7 @@ export function CommandPalette() {
         {/* Footer info */}
         <div className="flex items-center justify-between px-4 py-2.5 border-t border-white/10 bg-[#060A16] text-[11px] text-slate-400">
           <span>Navigate with mouse or keyboard</span>
-          <span className="font-mono text-cyan-400">BuildSpace v1.0 Production</span>
+          <span className="font-mono text-cyan-400">BuildSpace · Quick navigation</span>
         </div>
       </div>
     </div>

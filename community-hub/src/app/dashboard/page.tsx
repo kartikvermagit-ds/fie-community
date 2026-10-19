@@ -17,20 +17,15 @@ import {
   FolderGit2,
   FileText,
   Flame,
-  Clock,
   ArrowRight,
   PlusCircle,
   KeyRound,
-  CheckCircle2,
   CheckSquare,
-  ChevronRight,
-  Shield,
-  Layers,
 } from 'lucide-react';
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, isDemoMode } = useAuth();
   const {
     ideas,
     hackathons,
@@ -46,7 +41,6 @@ export default function DashboardPage() {
   const [showCodeModal, setShowCodeModal] = useState(false);
 
   const activeTeam = teams[0];
-  const userProjects = projects.filter((p) => p.team_id === activeTeam?.id);
   const userTasks = projects.flatMap((p) => p.tasks).filter((t) => t.status !== 'done');
 
   const handleJoinWithCode = (e: React.FormEvent) => {
@@ -76,6 +70,25 @@ export default function DashboardPage() {
       <ToastContainer />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <section aria-label="New ways to build together" className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.04] p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <h2 className="font-heading text-sm font-semibold text-cyan-200">More focus. Better conversations. Your next hackathon.</h2>
+            {isDemoMode && <span className="text-xs text-slate-400">Demo workspace · Changes saved in this browser</span>}
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { href: '/projects', icon: CheckSquare, title: 'Find your next task', description: 'Assigned work, upcoming deadlines, and a new list view.' },
+              { href: '/workspace', icon: MessagesSquare, title: 'Keep discussions together', description: 'Open a thread on any message and reply in its own panel.' },
+              { href: '/hackathons', icon: Trophy, title: 'Save your next challenge', description: 'Bookmark events and download their dates to your calendar.' },
+            ].map(({ href, icon: Icon, title, description }) => (
+              <Link key={href} href={href} className="rounded-xl border border-white/10 bg-[#070B14]/50 p-4 hover:border-cyan-400/40 transition-colors focus-visible:outline-2 focus-visible:outline-cyan-300">
+                <Icon className="h-4 w-4 text-cyan-300 mb-2" />
+                <h3 className="text-sm font-semibold text-white">{title}</h3>
+                <p className="mt-1 text-xs text-slate-400 leading-relaxed">{description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
         {/* Welcome Header & Action bar */}
         <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-gradient-to-r from-[#0C152C] via-[#091024] to-[#070B14] shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4">

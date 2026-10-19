@@ -55,7 +55,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#070B14]/80 backdrop-blur-xl transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Brand / Logo */}
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2.5 group">
@@ -67,7 +67,7 @@ export function Navbar() {
             <div className="flex flex-col">
               <span className="font-heading text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
                 BuildSpace
-                <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+                <span className="hidden sm:inline text-[10px] font-mono px-1.5 py-0.2 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
                   DEV
                 </span>
               </span>
@@ -78,7 +78,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden 2xl:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const Icon = link.icon;
@@ -101,7 +101,7 @@ export function Navbar() {
         </div>
 
         {/* Right Action Icons & Profile */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3">
           {/* Quick Search Bar / Command Palette trigger */}
           <button
             onClick={() => setIsCommandPaletteOpen(true)}
@@ -116,7 +116,7 @@ export function Navbar() {
           </button>
 
           {/* Demo Persona Switcher Pill */}
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <button
               onClick={() => {
                 setDemoSwitcherOpen(!demoSwitcherOpen);
@@ -315,8 +315,10 @@ export function Navbar() {
           {/* Mobile hamburger toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-400 hover:text-white rounded-xl border border-white/10 hover:bg-white/5 transition-colors"
+            className="2xl:hidden p-2 text-slate-400 hover:text-white rounded-xl border border-white/10 hover:bg-white/5 transition-colors"
             aria-label="Toggle Navigation"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="primary-navigation-drawer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -325,7 +327,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[#090E1D] px-4 pt-3 pb-6 space-y-1 animate-in slide-in-from-top-4 duration-200">
+        <div id="primary-navigation-drawer" className="2xl:hidden border-t border-white/10 bg-[#090E1D] px-4 pt-3 pb-6 space-y-1 animate-in slide-in-from-top-4 duration-200">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;

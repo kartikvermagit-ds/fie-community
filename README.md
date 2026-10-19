@@ -5,6 +5,17 @@
 
 ---
 
+## Latest workflow updates — 19 October 2026
+
+- **Task focus:** assigned-to-me, due-soon and overdue views; combined search and priority filters; board/list layouts; working squad/project selection and live task/checklist updates.
+- **Message threads:** focused conversations with their own replies, reply counts, composer and attachment cards, separate from the room timeline.
+- **Hackathon watchlist:** personal saved events, refresh-safe browser storage and downloadable `.ics` files for registration deadlines and competition dates.
+- **Demo persistence:** versioned campus snapshots preserve local work across refreshes and keep the current visit usable when browser storage fails.
+
+These workflows run in the local browser demo. Campus changes are shared between demo personas in the same browser; hackathon watchlists are separate for each profile. They do not sync across devices or implement Supabase collaboration queries. See [UPDATE_NOTES.md](UPDATE_NOTES.md) for feature inspiration, validation and remaining backend work.
+
+---
+
 ## 🌟 Visual Aesthetics & Design Language
 
 Inspired by futuristic developer aesthetics combined with modern SaaS clarity:

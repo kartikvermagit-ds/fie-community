@@ -5,6 +5,14 @@
 
 ---
 
+## Latest workflow updates — 19 October 2026
+
+Task focus filters and board/list layouts, separate message threads, personal saved hackathons with calendar export, and refresh-safe demo storage are now available. Start at `/dashboard` for links to the updated workflows.
+
+Collaboration data remains a browser demo: campus changes are shared between demo personas locally, watchlists are per profile, and neither syncs across devices. Connecting authentication alone does not connect this store to Supabase. See [update notes](../UPDATE_NOTES.md) for details and validation.
+
+---
+
 ## 🌟 Visual Aesthetics & Design Language
 
 Inspired by futuristic developer aesthetics combined with modern SaaS clarity:
