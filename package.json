@@ -1,0 +1,25 @@
+{
+  "name": "buildspace-platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "community-hub"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=community-hub",
+    "build": "npm run build --workspace=community-hub",
+    "start": "npm run start --workspace=community-hub",
+    "lint": "npm run lint --workspace=community-hub",
+    "typecheck": "npm run typecheck --workspace=community-hub",
+    "test": "npm run test --workspace=community-hub"
+  },
+  "keywords": [
+    "developer-community",
+    "hackathons",
+    "collaboration",
+    "realtime-chat",
+    "project-management"
+  ],
+  "author": "BuildSpace Team",
+  "license": "MIT"
+}
